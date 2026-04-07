@@ -1,0 +1,84 @@
+/* Custom styles for Edumax Static Copy */
+
+:root {
+    --primary-blue: #2563eb;
+    --primary-yellow: #facc15;
+}
+
+body {
+    scroll-behavior: smooth;
+    transition: background-color 0.3s ease;
+}
+
+/* Nav Item Styling */
+.nav-active {
+    color: var(--primary-blue) !important;
+    border-bottom: 2px solid var(--primary-yellow);
+}
+
+header.scrolled {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+}
+
+/* Feature Card Hover Effects */
+.feature-card:hover {
+    border-color: var(--primary-yellow) !important;
+    background: linear-gradient(to bottom right, #fefce8, #ffffff);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+.feature-card:hover .icon-wrap {
+    background-color: #fef08a !important;
+}
+
+.feature-card:hover h3 {
+    color: #000;
+}
+
+/* Smooth Transitions */
+.transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Custom Buttons & Links */
+.yellow-border-btn {
+    border: 2px solid var(--primary-yellow);
+    background-color: transparent;
+    color: #000; /* Darker text for readability */
+    font-weight: bold;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px; /* Rounded pill style */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-block;
+    text-align: center;
+}
+
+.yellow-border-btn:hover {
+    background-color: var(--primary-yellow);
+    border-color: var(--primary-yellow);
+    transform: scale(1.05);
+}
+
+.service-card {
+    transition: all 0.4s ease;
+}
+
+.service-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}
+
+main section {
+    animation: fadeIn 0.8s ease-out forwards;
+}
