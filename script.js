@@ -1,21 +1,36 @@
 // Edumax Static Copy Logic
 
-window.addEventListener('load', () => {
-    const preloader = document.getElementById('preloader');
-    const bar = document.getElementById('preloader-bar');
-    const bodyContent = document.getElementById('body-content');
-    
-    if(bar) bar.style.width = '100%';
+// Preloader Logic
+const preloader = document.getElementById('preloader');
+const bar = document.getElementById('preloader-bar');
+
+// Disable scroll while loading
+document.body.style.overflow = 'hidden';
+
+// Start initial progress
+if (bar) {
+    setTimeout(() => {
+        bar.style.width = '30%';
+    }, 100);
     
     setTimeout(() => {
-        if(preloader) {
+        bar.style.width = '60%';
+    }, 400);
+}
+
+window.addEventListener('load', () => {
+    if (bar) bar.style.width = '100%';
+    
+    setTimeout(() => {
+        if (preloader) {
             preloader.style.opacity = '0';
+            document.body.style.overflow = 'auto'; // Re-enable scroll
             
             setTimeout(() => {
                 preloader.style.display = 'none';
             }, 500);
         }
-    }, 1000);
+    }, 800);
 });
 
 document.addEventListener('DOMContentLoaded', () => {
