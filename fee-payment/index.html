@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting to Payment...</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #f8fafc;
+        }
+        .loader {
+            border: 4px border-blue-50 border-t-blue-600 rounded-full w-12 h-12 animate-spin;
+        }
+    </style>
+    <script>
+        // Redirect to main page with payment hash
+        window.location.href = "../#pay";
+    </script>
+</head>
+<body>
+    <div class="loader"></div>
+</body>
+</html>
