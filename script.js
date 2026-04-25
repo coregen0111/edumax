@@ -1,4 +1,46 @@
 // Edumax Static Copy Logic
+const paymentModal = document.getElementById('payment-modal');
+
+window.openPaymentModal = () => {
+    const modal = document.getElementById('payment-modal');
+    if (modal) {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+};
+
+window.closePaymentModal = () => {
+    const modal = document.getElementById('payment-modal');
+    if (modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+};
+
+// Check for hash and open modal (Recursive check to be 100% sure)
+function checkAndOpenPayment() {
+    if (window.location.hash === '#pay' || window.location.hash === '#payment') {
+        const modal = document.getElementById('payment-modal');
+        if (modal && modal.classList.contains('hidden')) {
+            window.openPaymentModal();
+        }
+    }
+}
+
+// Initial checks
+checkAndOpenPayment();
+window.addEventListener('load', checkAndOpenPayment);
+window.addEventListener('hashchange', checkAndOpenPayment);
+
+// Backup interval check (stops after 5 seconds or when modal opens)
+let checkCount = 0;
+const checkInterval = setInterval(() => {
+    checkAndOpenPayment();
+    checkCount++;
+    if (checkCount > 20 || (document.getElementById('payment-modal') && !document.getElementById('payment-modal').classList.contains('hidden'))) {
+        clearInterval(checkInterval);
+    }
+}, 500);
 
 // Preloader Logic
 const preloader = document.getElementById('preloader');
@@ -123,24 +165,6 @@ document.addEventListener('DOMContentLoaded', () => {
     highlightActiveSection();
 });
 
-// Payment Modal & Razorpay Logic
-const paymentModal = document.getElementById('payment-modal');
-const paymentForm = document.getElementById('payment-form');
-
-window.openPaymentModal = () => {
-    if (paymentModal) {
-        paymentModal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-    }
-};
-
-window.closePaymentModal = () => {
-    if (paymentModal) {
-        paymentModal.classList.add('hidden');
-        document.body.style.overflow = 'auto';
-    }
-};
-
 window.closeSuccessModal = () => {
     const successModal = document.getElementById('success-modal');
     if (successModal) {
@@ -148,6 +172,8 @@ window.closeSuccessModal = () => {
         document.body.style.overflow = 'auto';
     }
 };
+
+const paymentForm = document.getElementById('payment-form');
 
 if (paymentForm) {
     paymentForm.addEventListener('submit', (e) => {
