@@ -122,3 +122,99 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize state
     highlightActiveSection();
 });
+
+// Payment Modal & Razorpay Logic
+const paymentModal = document.getElementById('payment-modal');
+const paymentForm = document.getElementById('payment-form');
+
+window.openPaymentModal = () => {
+    if (paymentModal) {
+        paymentModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+};
+
+window.closePaymentModal = () => {
+    if (paymentModal) {
+        paymentModal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+};
+
+window.closeSuccessModal = () => {
+    const successModal = document.getElementById('success-modal');
+    if (successModal) {
+        successModal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+};
+
+if (paymentForm) {
+    paymentForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const name = document.getElementById('student-name').value;
+        const phone = document.getElementById('student-phone').value;
+        const email = document.getElementById('student-email').value;
+        const course = document.getElementById('course-name').value;
+        const amount = document.getElementById('fee-amount').value;
+
+        if (!amount || amount <= 0) {
+            alert('Please enter a valid amount');
+            return;
+        }
+
+        const options = {
+            "key": "rzp_live_ShhTFuArxuJjdt",
+            "amount": amount * 100, // Amount in paise
+            "currency": "INR",
+            "name": "Edumax Institute",
+            "description": `Fee for ${course}`,
+            "image": "images/edumax-logo.png",
+            "handler": function (response) {
+                // Populate Success Details
+                document.getElementById('receipt-name').innerText = name;
+                document.getElementById('receipt-course').innerText = course;
+                document.getElementById('receipt-amount').innerText = `₹${amount}`;
+                document.getElementById('receipt-id').innerText = response.razorpay_payment_id;
+
+                // WhatsApp Link Generation
+                const waMessage = `*Payment Confirmation - Edumax Institute*%0A%0A*Name:* ${name}%0A*Course:* ${course}%0A*Amount:* ₹${amount}%0A*Payment ID:* ${response.razorpay_payment_id}%0A%0AStatus: Paid Successfully.`;
+                const waLink = `https://wa.me/919039662559?text=${waMessage}`;
+                document.getElementById('whatsapp-confirm-btn').href = waLink;
+
+                // Show Success Modal
+                closePaymentModal();
+                const successModal = document.getElementById('success-modal');
+                if (successModal) {
+                    successModal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                }
+                paymentForm.reset();
+            },
+            "prefill": {
+                "name": name,
+                "email": email,
+                "contact": phone
+            },
+            "notes": {
+                "course": course,
+                "student_name": name
+            },
+            "theme": {
+                "color": "#2563eb"
+            }
+        };
+
+        try {
+            const rzp = new Razorpay(options);
+            rzp.on('payment.failed', function (response){
+                alert(`Payment Failed: ${response.error.description}`);
+            });
+            rzp.open();
+        } catch (error) {
+            console.error('Razorpay failed to load:', error);
+            alert('Payment gateway is currently unavailable. Please try again later.');
+        }
+    });
+}
