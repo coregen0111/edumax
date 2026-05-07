@@ -191,7 +191,7 @@ if (paymentForm) {
         }
 
         const options = {
-            "key": "rzp_live_ShhTFuArxuJjdt",
+            "key": "rzp_live_SmNTGrko89vt7e",
             "amount": amount * 100, // Amount in paise
             "currency": "INR",
             "name": "Edumax Institute",
