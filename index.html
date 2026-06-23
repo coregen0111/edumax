@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edumax Institute | Master English & Academics</title>
+    <title>Edumax Institute | Digital Marketing & English Courses</title>
     <!-- Tailwind CSS Play CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
@@ -55,8 +55,11 @@
             <!-- Desktop Menu -->
             <nav class="hidden md:flex items-center gap-8" id="desktop-nav">
                 <button onclick="scrollToSection('home')"
-                    class="nav-item font-semibold text-blue-600 border-b-2 border-yellow-400 transition-all duration-300"
+                    class="nav-item font-semibold text-gray-700 hover:text-blue-600 transition-all duration-300"
                     data-section="home">Home</button>
+                <button onclick="scrollToSection('digital-marketing')"
+                    class="nav-item font-semibold text-blue-600 border-b-2 border-yellow-400 transition-all duration-300"
+                    data-section="digital-marketing">Digital Marketing</button>
                 <button onclick="scrollToSection('english')"
                     class="nav-item font-semibold text-gray-700 hover:text-blue-600"
                     data-section="english">English</button>
@@ -102,6 +105,8 @@
             <nav class="flex flex-col py-2">
                 <button onclick="scrollToSection('home')"
                     class="px-4 py-3 text-left font-semibold text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition-colors">Home</button>
+                <button onclick="scrollToSection('digital-marketing')"
+                    class="px-4 py-3 text-left font-semibold text-blue-600 bg-blue-50 hover:bg-blue-100 transition-colors">📊 Digital Marketing</button>
                 <button onclick="scrollToSection('english')"
                     class="px-4 py-3 text-left font-semibold text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition-colors">English</button>
                 <button onclick="scrollToSection('kids')"
@@ -112,7 +117,7 @@
                     class="px-4 py-3 text-left font-semibold text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition-colors">Contact</button>
                 <button onclick="openPaymentModal()"
                     class="mx-4 my-2 px-4 py-3 bg-blue-600 text-white font-bold rounded-md text-center">Pay Fee Online</button>
-                <a href="https://wa.me/919039662559?text=Hi!%20I%20want%20to%20enroll%20in%20Edumax%20Institute%20today"
+                <a href="https://wa.me/919039662559?text=Hi!%20I%20want%20to%20enroll%20in%20Digital%20Marketing%20course"
                     class="px-4 py-3">
                     <div class="w-full bg-yellow-400 text-gray-900 font-bold px-6 py-2 rounded-md text-center">Enroll Now
                     </div>
@@ -146,6 +151,10 @@
                     speaking, ace your academics, and build confidence with a globally trusted education institute</p>
 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                    <button onclick="scrollToSection('digital-marketing')"
+                        class="px-8 py-4 text-lg font-bold bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-md hover:shadow-xl shadow-lg transition-all hover:scale-105 inline-block whitespace-nowrap">
+                        🚀 Digital Marketing Course →
+                    </button>
                     <a href="https://wa.me/919039662559?text=Hi!%20I%20want%20to%20join%20the%20English%20speaking%20course"
                         class="px-8 py-4 text-lg font-bold bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 rounded-md hover:shadow-xl shadow-lg transition-all hover:scale-105 inline-block whitespace-nowrap">
                         Join English Speaking →
@@ -165,6 +174,85 @@
                         class="text-blue-600 hover:underline text-lg">+91 90396 62559</a></p>
                 <p class="text-gray-600 font-semibold">Email: <a href="mailto:vjain206542@gmail.com"
                         class="text-blue-600 hover:underline text-lg">vjain206542@gmail.com</a></p>
+            </div>
+        </section>
+
+        <!-- DIGITAL MARKETING Section -->
+        <section id="digital-marketing"
+            class="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 bg-gradient-to-br from-blue-50 via-white to-blue-50">
+            <div class="absolute top-10 right-5 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+            <div class="absolute -bottom-20 left-10 w-80 h-80 bg-yellow-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+
+            <div class="max-w-6xl mx-auto w-full relative z-10">
+                <!-- Heading -->
+                <div class="text-center mb-10">
+                    <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-4 bg-yellow-100 text-yellow-700 border border-yellow-300">✨ New Batch Starting Soon</span>
+                    <h2 class="text-5xl sm:text-6xl font-bold mb-3">
+                        <span class="gradient-text bg-gradient-to-r from-blue-600 to-blue-800">Digital Marketing</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">From basics to advanced — master the skills that drive real business growth online</p>
+                </div>
+
+                <!-- Duration pills -->
+                <div class="flex flex-wrap justify-center gap-3 mb-10">
+                    <span class="flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold bg-white border-2 border-blue-100 text-gray-700 shadow-sm">⏳ 3 Months Course</span>
+                    <span class="flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold bg-white border-2 border-blue-100 text-gray-700 shadow-sm">📅 Mon – Fri · 1 Hr Daily</span>
+                    <span class="flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold bg-white border-2 border-blue-100 text-gray-700 shadow-sm">📱 Online Available</span>
+                    <span class="flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-bold bg-yellow-400 text-gray-900 shadow-sm">💰 ₹3,000 / Month</span>
+                </div>
+
+                <!-- Curriculum Grid -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-10">
+                    <div class="feature-card group p-4 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all duration-300 flex items-center gap-3">
+                        <div class="p-2 bg-blue-50 rounded-lg shrink-0 group-hover:bg-blue-600 transition-colors duration-300 text-xl leading-none">📈</div>
+                        <p class="font-semibold text-gray-800 text-sm leading-tight">Basic to Advanced Digital Marketing</p>
+                    </div>
+                    <div class="feature-card group p-4 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all duration-300 flex items-center gap-3">
+                        <div class="p-2 bg-blue-50 rounded-lg shrink-0 group-hover:bg-blue-600 transition-colors duration-300 text-xl leading-none">📱</div>
+                        <p class="font-semibold text-gray-800 text-sm leading-tight">Social Media Marketing</p>
+                    </div>
+                    <div class="feature-card group p-4 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all duration-300 flex items-center gap-3">
+                        <div class="p-2 bg-blue-50 rounded-lg shrink-0 group-hover:bg-blue-600 transition-colors duration-300 text-xl leading-none">🎯</div>
+                        <p class="font-semibold text-gray-800 text-sm leading-tight">Facebook &amp; Instagram Ads</p>
+                    </div>
+                    <div class="feature-card group p-4 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all duration-300 flex items-center gap-3">
+                        <div class="p-2 bg-blue-50 rounded-lg shrink-0 group-hover:bg-blue-600 transition-colors duration-300 text-xl leading-none">🔍</div>
+                        <p class="font-semibold text-gray-800 text-sm leading-tight">Google Ads Fundamentals</p>
+                    </div>
+                    <div class="feature-card group p-4 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all duration-300 flex items-center gap-3">
+                        <div class="p-2 bg-blue-50 rounded-lg shrink-0 group-hover:bg-blue-600 transition-colors duration-300 text-xl leading-none">🌐</div>
+                        <p class="font-semibold text-gray-800 text-sm leading-tight">SEO &amp; Website Promotion</p>
+                    </div>
+                    <div class="feature-card group p-4 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all duration-300 flex items-center gap-3">
+                        <div class="p-2 bg-blue-50 rounded-lg shrink-0 group-hover:bg-blue-600 transition-colors duration-300 text-xl leading-none">✍️</div>
+                        <p class="font-semibold text-gray-800 text-sm leading-tight">Content Marketing Strategies</p>
+                    </div>
+                    <div class="feature-card group p-4 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all duration-300 flex items-center gap-3">
+                        <div class="p-2 bg-blue-50 rounded-lg shrink-0 group-hover:bg-blue-600 transition-colors duration-300 text-xl leading-none">🧲</div>
+                        <p class="font-semibold text-gray-800 text-sm leading-tight">Lead Generation Techniques</p>
+                    </div>
+                    <div class="feature-card group p-4 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all duration-300 flex items-center gap-3">
+                        <div class="p-2 bg-blue-50 rounded-lg shrink-0 group-hover:bg-blue-600 transition-colors duration-300 text-xl leading-none">💻</div>
+                        <p class="font-semibold text-gray-800 text-sm leading-tight">Practical Live Projects</p>
+                    </div>
+                    <div class="feature-card group p-4 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all duration-300 flex items-center gap-3">
+                        <div class="p-2 bg-blue-50 rounded-lg shrink-0 group-hover:bg-blue-600 transition-colors duration-300 text-xl leading-none">🏆</div>
+                        <p class="font-semibold text-gray-800 text-sm leading-tight">Certificate + Job-Oriented Training</p>
+                    </div>
+                </div>
+
+                <!-- CTA Banner -->
+                <div class="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-8 text-white text-center shadow-2xl">
+                    <p class="text-3xl font-bold mb-2">🚀 Start Your Digital Marketing Career Today!</p>
+                    <p class="text-blue-100 mb-6">Limited seats · Batch starting soon · Online classes available</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-4">
+                        <a href="https://wa.me/919039662559?text=Hi!%20I%20want%20to%20enroll%20in%20the%20Digital%20Marketing%20course%20at%20Edumax"
+                            class="bg-yellow-400 text-gray-900 font-bold px-8 py-3 rounded-md hover:bg-yellow-500 shadow-lg inline-block transition-all hover:scale-105">Enroll on WhatsApp →</a>
+                        <a href="mailto:jain206542@gmail.com"
+                            class="bg-white/10 border border-white/30 text-white font-bold px-8 py-3 rounded-md hover:bg-white/20 inline-block transition-all">jain206542@gmail.com</a>
+                    </div>
+                    <p class="text-blue-200 font-semibold text-sm">📞 Call/WhatsApp: <a href="https://wa.me/919039662559" class="text-yellow-400 hover:underline">+91 90396 62559</a></p>
+                </div>
             </div>
         </section>
 
@@ -520,6 +608,20 @@
                             +91 70670 97574
                         </a>
                     </div>
+
+                    <!-- Digital Marketing Contact -->
+                    <div class="bg-white p-4 rounded-3xl border-2 border-gray-100 shadow-xl hover:shadow-2xl transition-all group" style="border-color: rgba(168,85,247,0.3);">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-12 h-12 text-white rounded-xl flex items-center justify-center text-xl shadow-lg group-hover:scale-110 transition-transform" style="background: linear-gradient(135deg, #a855f7, #3b82f6);">📊</div>
+                            <div class="text-left">
+                                <p class="text-[10px] font-bold uppercase tracking-wider" style="color: #a855f7;">Digital Marketing</p>
+                                <h3 class="text-md font-extrabold text-gray-900">₹3,000/Month</h3>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/919039662559?text=Hi!%20I%20want%20to%20enroll%20in%20the%20Digital%20Marketing%20course" class="block w-full py-3 text-white text-lg font-black rounded-xl hover:opacity-90 transition-all text-center whitespace-nowrap" style="background: linear-gradient(90deg, #a855f7, #3b82f6);">
+                            +91 90396 62559
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Consolidated Support Info Card -->
@@ -585,6 +687,7 @@
             <div>
                 <h4 class="font-bold mb-4">Quick Links</h4>
                 <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><button onclick="scrollToSection('digital-marketing')" class="hover:text-purple-400 transition-colors">📊 Digital Marketing</button></li>
                     <li><button onclick="scrollToSection('english')">English Speaking</button></li>
                     <li><button onclick="scrollToSection('kids')">Kids Coaching</button></li>
                     <li><button onclick="scrollToSection('assignments')">Assignments</button></li>
@@ -632,6 +735,7 @@
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">Course Name</label>
                     <select id="course-name" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-blue-600 outline-none transition-all">
+                        <option value="Digital Marketing">Digital Marketing</option>
                         <option value="English Speaking">English Speaking</option>
                         <option value="Kids Coaching">Kids Coaching</option>
                         <option value="Assignment Help">Assignment Help</option>
