@@ -70,6 +70,11 @@ window.addEventListener('load', () => {
             
             setTimeout(() => {
                 preloader.style.display = 'none';
+                // Auto-scroll to Digital Marketing section on first load
+                const dmSection = document.getElementById('digital-marketing');
+                if (dmSection && !window.location.hash) {
+                    dmSection.scrollIntoView({ behavior: 'smooth' });
+                }
             }, 500);
         }
     }, 800);
@@ -138,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Auto-highlighting sections during scroll
     function highlightActiveSection() {
-        const sections = ['home', 'english', 'kids', 'assignments', 'contact'];
+        const sections = ['home', 'digital-marketing', 'english', 'kids', 'assignments', 'contact'];
         let activeSec = 'home';
         
         const scrollPos = window.scrollY + 100; // Offset for better detection
