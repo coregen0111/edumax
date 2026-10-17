@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en"> 
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edumax Institute | Digital Marketing & English Courses</title>
+    <!-- Tailwind CSS Play CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Razorpay SDK -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-white text-gray-900 overflow-x-hidden scroll-smooth" id="body-content">
+
+    <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 z-[100] bg-white flex flex-col items-center justify-center transition-opacity duration-500">
+        <div class="relative flex flex-col items-center justify-center">
+            <!-- Rotating Ring -->
+            <div class="absolute w-40 h-40 border-4 border-blue-50 border-t-blue-600 rounded-full animate-spin"></div>
+            <!-- Pulsing Logo -->
+            <img src="images/edumax-logo.png" alt="Edumax" class="relative z-10 h-24 w-auto animate-pulse transform hover:scale-110 transition-transform">
+            
+            <div class="mt-12 w-48 h-1 bg-gray-100 rounded-full overflow-hidden relative">
+                <div id="preloader-bar" class="h-full bg-gradient-to-r from-blue-600 to-yellow-400 transition-all duration-[500ms] ease-out w-0"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Header -->
+    <header id="main-header" class="sticky top-0 z-40 transition-all duration-300 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <img src="images/edumax-logo.png" alt="Edumax Institute" class="h-20 sm:h-28 w-auto drop-shadow-sm">
+            </div>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex items-center gap-8" id="desktop-nav">
+                <button onclick="scrollToSection('home')"
+                    class="nav-item font-semibold text-gray-700 hover:text-blue-600 transition-all duration-300"
+                    data-section="home">Home</button>
+                <a href="index.html"
+                    class="font-semibold text-orange-500 hover:text-orange-600 transition-all duration-300 border-b-2 border-orange-400 whitespace-nowrap"
+                    style="text-decoration:none;">🏗️ Construction A to Z</a>
+                <button onclick="scrollToSection('digital-marketing')"
+                    class="nav-item font-semibold text-blue-600 border-b-2 border-yellow-400 transition-all duration-300"
+                    data-section="digital-marketing">Digital Marketing</button>
+                <button onclick="scrollToSection('english')"
+                    class="nav-item font-semibold text-gray-700 hover:text-blue-600"
+                    data-section="english">English</button>
+                <button onclick="scrollToSection('kids')"
+                    class="nav-item font-semibold text-gray-700 hover:text-blue-600" data-section="kids">Kids</button>
+                <button onclick="scrollToSection('assignments')"
+                    class="nav-item font-semibold text-gray-700 hover:text-blue-600"
+                    data-section="assignments">Assignments</button>
+                <button onclick="scrollToSection('contact')"
+                    class="nav-item font-semibold text-gray-700 hover:text-blue-600"
+                    data-section="contact">Contact</button>
+            </nav>
+
+            <div class="hidden sm:flex items-center gap-3">
+                <button onclick="openPaymentModal()"
+                    class="bg-blue-600 text-white font-bold px-6 py-2 rounded-md hover:bg-blue-700 shadow-lg inline-block text-center whitespace-nowrap transition-all">
+                    Pay Fee
+                </button>
+                <a href="https://wa.me/919039662559?text=Hi!%20I%20want%20to%20enroll%20in%20Edumax%20Institute%20today"
+                    class="bg-yellow-400 text-gray-900 font-bold px-6 py-2 rounded-md hover:bg-yellow-500 shadow-lg inline-block text-center whitespace-nowrap">
+                    Enroll Now
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 hover:bg-gray-100 rounded-lg">
+                <svg id="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+                <svg id="close-icon" class="hidden" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <nav class="flex flex-col py-2">
+                <button onclick="scrollToSection('home')"
+                    class="px-4 py-3 text-left font-semibold text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition-colors">Home</button>
+                <a href="index.html"
+                    class="px-4 py-3 text-left font-semibold bg-orange-50 text-orange-500 hover:bg-orange-100 transition-colors block" style="text-decoration:none;">🏗️ Construction A to Z</a>
+                <button onclick="scrollToSection('digital-marketing')"
+                    class="px-4 py-3 text-left font-semibold text-blue-600 bg-blue-50 hover:bg-blue-100 transition-colors">📊 Digital Marketing</button>
+                <button onclick="scrollToSection('english')"
+                    class="px-4 py-3 text-left font-semibold text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition-colors">English</button>
+                <button onclick="scrollToSection('kids')"
+                    class="px-4 py-3 text-left font-semibold text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition-colors">Kids</button>
+                <button onclick="scrollToSection('assignments')"
+                    class="px-4 py-3 text-left font-semibold text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition-colors">Assignments</button>
+                <button onclick="scrollToSection('contact')"
+                    class="px-4 py-3 text-left font-semibold text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition-colors">Contact</button>
+                <button onclick="openPaymentModal()"
+                    class="mx-4 my-2 px-4 py-3 bg-blue-600 text-white font-bold rounded-md text-center">Pay Fee Online</button>
+                <a href="https://wa.me/919039662559?text=Hi!%20I%20want%20to%20enroll%20in%20Digital%20Marketing%20course"
+                    class="px-4 py-3">
+                    <div class="w-full bg-yellow-400 text-gray-900 font-bold px-6 py-2 rounded-md text-center">Enroll Now
+                    </div>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="overflow-hidden">
+        <!-- HERO Section -->
+        <section id="home"
+            class="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-12 pb-20 bg-gradient-to-br from-blue-50 via-white to-blue-50 overflow-hidden">
+            <div
+                class="absolute top-10 right-5 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse">
+            </div>
+            <div
+                class="absolute -bottom-20 left-10 w-80 h-80 bg-yellow-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse">
+            </div>
+
+            <div class="relative max-w-5xl mx-auto text-center z-10">
+                <div class="inline-block mb-6 px-4 py-2 bg-white rounded-full shadow-md border border-gray-200">
+                    <p class="text-sm font-semibold text-gray-700">✓ <span class="text-blue-600">100+ Students</span> |
+                        Daily Practice | Expert Guidance</p>
+                </div>
+                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                    <span class="gradient-text bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800">Transform
+                        Your</span><br>
+                    <span class="gradient-text bg-gradient-to-r from-yellow-400 to-yellow-500">Learning Journey</span>
+                </h1>
+                <p class="text-xl sm:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">Master English
+                    speaking, ace your academics, and build confidence with a globally trusted education institute</p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                    <button onclick="scrollToSection('digital-marketing')"
+                        class="px-8 py-4 text-lg font-bold bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-md hover:shadow-xl shadow-lg transition-all hover:scale-105 inline-block whitespace-nowrap">
+                        🚀 Digital Marketing Course →
+                    </button>
+                    <a href="https://wa.me/919039662559?text=Hi!%20I%20want%20to%20join%20the%20English%20speaking%20course"
+                        class="px-8 py-4 text-lg font-bold bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 rounded-md hover:shadow-xl shadow-lg transition-all hover:scale-105 inline-block whitespace-nowrap">
+                        Join English Speaking →
+                    </a>
+                    <a href="https://wa.me/917067097574?text=Hi!%20I%20want%20to%20join%20the%20Kids%20coaching%20classes"
+                        class="px-8 py-4 text-lg font-bold border-2 border-blue-600 text-blue-600 hover:bg-blue-50 rounded-md transition-all inline-block whitespace-nowrap">
+                        Join Kids Coaching →
+                    </a>
+                </div>
+                <div class="mb-8">
+                    <button onclick="openPaymentModal()"
+                        class="px-10 py-4 text-xl font-extrabold bg-blue-600 text-white rounded-xl hover:bg-blue-700 shadow-2xl transition-all hover:scale-105 inline-block">
+                        Pay Fee Online
+                    </button>
+                </div>
+                <p class="text-gray-600 font-semibold mb-2">WhatsApp: <a href="https://wa.me/919039662559"
+                        class="text-blue-600 hover:underline text-lg">+91 90396 62559</a></p>
+                <p class="text-gray-600 font-semibold">Email: <a href="mailto:vjain206542@gmail.com"
+                        class="text-blue-600 hover:underline text-lg">vjain206542@gmail.com</a></p>
+            </div>
+        </section>
+
+        <!-- DIGITAL MARKETING Section -->
+        <section id="digital-marketing"
+            class="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 bg-gradient-to-br from-blue-50 via-white to-blue-50">
+            <div class="absolute top-10 right-5 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+            <div class="absolute -bottom-20 left-10 w-80 h-80 bg-yellow-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+
+            <div class="max-w-6xl mx-auto w-full relative z-10">
+                <!-- Heading -->
+                <div class="text-center mb-10">
+                    <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-4 bg-yellow-100 text-yellow-700 border border-yellow-300">✨ New Batch Starting Soon</span>
+                    <h2 class="text-5xl sm:text-6xl font-bold mb-3">
+                        <span class="gradient-text bg-gradient-to-r from-blue-600 to-blue-800">Digital Marketing</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">From basics to advanced — master the skills that drive real business growth online</p>
+                </div>
+
+                <!-- Duration pills -->
+                <div class="flex flex-wrap justify-center gap-3 mb-10">
+                    <span class="flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold bg-white border-2 border-blue-100 text-gray-700 shadow-sm">⏳ 3 Months Course</span>
+                    <span class="flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold bg-white border-2 border-blue-100 text-gray-700 shadow-sm">📅 Mon – Fri · 1 Hr Daily</span>
+                    <span class="flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold bg-white border-2 border-blue-100 text-gray-700 shadow-sm">📱 Online Available</span>
+                    <span class="flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-bold bg-yellow-400 text-gray-900 shadow-sm">💰 ₹3,000 / Month</span>
+                </div>
+
+                <!-- Curriculum Grid -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-10">
+                    <div class="feature-card group p-4 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all duration-300 flex items-center gap-3">
+                        <div class="p-2 bg-blue-50 rounded-lg shrink-0 group-hover:bg-blue-600 transition-colors duration-300 text-xl leading-none">📈</div>
+                        <p class="font-semibold text-gray-800 text-sm leading-tight">Basic to Advanced Digital Marketing</p>
+                    </div>
+                    <div class="feature-card group p-4 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all duration-300 flex items-center gap-3">
+                        <div class="p-2 bg-blue-50 rounded-lg shrink-0 group-hover:bg-blue-600 transition-colors duration-300 text-xl leading-none">📱</div>
+                        <p class="font-semibold text-gray-800 text-sm leading-tight">Social Media Marketing</p>
+                    </div>
+                    <div class="feature-card group p-4 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all duration-300 flex items-center gap-3">
+                        <div class="p-2 bg-blue-50 rounded-lg shrink-0 group-hover:bg-blue-600 transition-colors duration-300 text-xl leading-none">🎯</div>
+                        <p class="font-semibold text-gray-800 text-sm leading-tight">Facebook &amp; Instagram Ads</p>
+                    </div>
+                    <div class="feature-card group p-4 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all duration-300 flex items-center gap-3">
+                        <div class="p-2 bg-blue-50 rounded-lg shrink-0 group-hover:bg-blue-600 transition-colors duration-300 text-xl leading-none">🔍</div>
+                        <p class="font-semibold text-gray-800 text-sm leading-tight">Google Ads Fundamentals</p>
+                    </div>
+                    <div class="feature-card group p-4 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all duration-300 flex items-center gap-3">
+                        <div class="p-2 bg-blue-50 rounded-lg shrink-0 group-hover:bg-blue-600 transition-colors duration-300 text-xl leading-none">🌐</div>
+                        <p class="font-semibold text-gray-800 text-sm leading-tight">SEO &amp; Website Promotion</p>
+                    </div>
+                    <div class="feature-card group p-4 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all duration-300 flex items-center gap-3">
+                        <div class="p-2 bg-blue-50 rounded-lg shrink-0 group-hover:bg-blue-600 transition-colors duration-300 text-xl leading-none">✍️</div>
+                        <p class="font-semibold text-gray-800 text-sm leading-tight">Content Marketing Strategies</p>
+                    </div>
+                    <div class="feature-card group p-4 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all duration-300 flex items-center gap-3">
+                        <div class="p-2 bg-blue-50 rounded-lg shrink-0 group-hover:bg-blue-600 transition-colors duration-300 text-xl leading-none">🧲</div>
+                        <p class="font-semibold text-gray-800 text-sm leading-tight">Lead Generation Techniques</p>
+                    </div>
+                    <div class="feature-card group p-4 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all duration-300 flex items-center gap-3">
+                        <div class="p-2 bg-blue-50 rounded-lg shrink-0 group-hover:bg-blue-600 transition-colors duration-300 text-xl leading-none">💻</div>
+                        <p class="font-semibold text-gray-800 text-sm leading-tight">Practical Live Projects</p>
+                    </div>
+                    <div class="feature-card group p-4 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all duration-300 flex items-center gap-3">
+                        <div class="p-2 bg-blue-50 rounded-lg shrink-0 group-hover:bg-blue-600 transition-colors duration-300 text-xl leading-none">🏆</div>
+                        <p class="font-semibold text-gray-800 text-sm leading-tight">Certificate + Job-Oriented Training</p>
+                    </div>
+                </div>
+
+                <!-- CTA Banner -->
+                <div class="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-8 text-white text-center shadow-2xl">
+                    <p class="text-3xl font-bold mb-2">🚀 Start Your Digital Marketing Career Today!</p>
+                    <p class="text-blue-100 mb-6">Limited seats · Batch starting soon · Online classes available</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-4">
+                        <a href="https://wa.me/919039662559?text=Hi!%20I%20want%20to%20enroll%20in%20the%20Digital%20Marketing%20course%20at%20Edumax"
+                            class="bg-yellow-400 text-gray-900 font-bold px-8 py-3 rounded-md hover:bg-yellow-500 shadow-lg inline-block transition-all hover:scale-105">Enroll on WhatsApp →</a>
+                        <a href="mailto:jain206542@gmail.com"
+                            class="bg-white/10 border border-white/30 text-white font-bold px-8 py-3 rounded-md hover:bg-white/20 inline-block transition-all">jain206542@gmail.com</a>
+                    </div>
+                    <p class="text-blue-200 font-semibold text-sm">📞 Call/WhatsApp: <a href="https://wa.me/919039662559" class="text-yellow-400 hover:underline">+91 90396 62559</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ENGLISH Section -->
+        <section id="english"
+            class="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 bg-gradient-to-br from-white via-gray-50 to-white">
+            <div class="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-blue-50 to-transparent"></div>
+            <div class="max-w-6xl mx-auto w-full relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl sm:text-6xl font-bold mb-4">
+                        <span class="gradient-text bg-gradient-to-r from-blue-600 to-blue-800">Edumax English
+                            Speaking</span>
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto">Daily practice, expert guidance, and personalized
+                        feedback to boost your confidence</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                    <div
+                        class="feature-card group p-8 rounded-2xl bg-white border-2 border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300">
+                        <div class="icon-wrap mb-4 p-3 bg-gradient-to-br from-blue-100 to-blue-50 rounded-xl w-fit">
+                            <span class="text-blue-600 text-2xl">📖</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Daily Practice</h3>
+                        <p class="text-gray-600">Live speaking sessions every day</p>
+                    </div>
+                    <div
+                        class="feature-card group p-8 rounded-2xl bg-white border-2 border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300">
+                        <div class="icon-wrap mb-4 p-3 bg-gradient-to-br from-blue-100 to-blue-50 rounded-xl w-fit">
+                            <span class="text-blue-600 text-2xl">👥</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Interview Prep</h3>
+                        <p class="text-gray-600">Prepare for job interviews</p>
+                    </div>
+                    <div
+                        class="feature-card group p-8 rounded-2xl bg-white border-2 border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300">
+                        <div class="icon-wrap mb-4 p-3 bg-gradient-to-br from-blue-100 to-blue-50 rounded-xl w-fit">
+                            <span class="text-blue-600 text-2xl">⚡</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Group Discussion</h3>
+                        <p class="text-gray-600">Enhance public speaking skills</p>
+                    </div>
+                    <div
+                        class="feature-card group p-8 rounded-2xl bg-white border-2 border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300">
+                        <div class="icon-wrap mb-4 p-3 bg-gradient-to-br from-blue-100 to-blue-50 rounded-xl w-fit">
+                            <span class="text-blue-600 text-2xl">🏆</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Grammar Mastery</h3>
+                        <p class="text-gray-600">Learn correct usage patterns</p>
+                    </div>
+                    <div
+                        class="feature-card group p-8 rounded-2xl bg-white border-2 border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300">
+                        <div class="icon-wrap mb-4 p-3 bg-gradient-to-br from-blue-100 to-blue-50 rounded-xl w-fit">
+                            <span class="text-blue-600 text-2xl">👨‍🏫</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Expert Teachers</h3>
+                        <p class="text-gray-600">Trained professionals guiding you</p>
+                    </div>
+                    <div
+                        class="feature-card group p-8 rounded-2xl bg-white border-2 border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300">
+                        <div class="icon-wrap mb-4 p-3 bg-gradient-to-br from-blue-100 to-blue-50 rounded-xl w-fit">
+                            <span class="text-blue-600 text-2xl">📜</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Certificate</h3>
+                        <p class="text-gray-600">Earn verified certificate</p>
+                    </div>
+                    <div
+                        class="feature-card group p-8 rounded-2xl bg-white border-2 border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300">
+                        <div class="icon-wrap mb-4 p-3 bg-gradient-to-br from-blue-100 to-blue-50 rounded-xl w-fit">
+                            <span class="text-blue-600 text-2xl">📄</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">PDF Notes</h3>
+                        <p class="text-gray-600">Get comprehensive study material</p>
+                    </div>
+                    <div
+                        class="feature-card group p-8 rounded-2xl bg-white border-2 border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300">
+                        <div class="icon-wrap mb-4 p-3 bg-gradient-to-br from-blue-100 to-blue-50 rounded-xl w-fit">
+                            <span class="text-blue-600 text-2xl">💬</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Doubt Sessions</h3>
+                        <p class="text-gray-600">Get all your queries resolved</p>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-8 text-white text-center mb-8 shadow-2xl">
+                    <p class="text-3xl font-bold mb-6">🚀 Master English Speaking - Join Our New Batch</p>
+                    <a href="https://wa.me/919039662559?text=I%20want%20to%20enroll%20in%20the%20English%20speaking%20course"
+                        class="bg-yellow-400 text-gray-900 font-bold px-8 py-3 rounded-md hover:bg-yellow-500 shadow-lg inline-block">Enroll
+                        Now</a>
+                </div>
+                <div class="text-center">
+                    <p class="text-gray-600 mb-4 font-semibold">Limited seats available. Join before they fill up!</p>
+                    <a href="https://wa.me/919039662559?text=Sign%20me%20up%20for%20the%20English%20speaking%20classes"
+                        class="bg-gradient-to-r from-blue-600 to-blue-800 text-white font-bold px-8 py-4 text-lg rounded-md hover:shadow-xl shadow-lg inline-block">Reserve
+                        Your Seat →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- KIDS Section -->
+        <section id="kids"
+            class="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 bg-gradient-to-br from-yellow-50 via-white to-yellow-50">
+            <div class="max-w-6xl mx-auto w-full relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl sm:text-6xl font-bold mb-4">
+                        <span class="gradient-text bg-gradient-to-r from-blue-600 to-blue-800">Edumax Kids
+                            Coaching</span><br>
+                        <span class="text-yellow-500">Classes 1-8</span>
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Complete academic support with personalized attention on each and every student</p>
+                </div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+                    <div
+                        class="p-6 rounded-2xl bg-gradient-to-br from-yellow-400 to-yellow-300 text-gray-900 font-bold text-center text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all">
+                        Maths</div>
+                    <div
+                        class="p-6 rounded-2xl bg-gradient-to-br from-yellow-400 to-yellow-300 text-gray-900 font-bold text-center text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all">
+                        English</div>
+                    <div
+                        class="p-6 rounded-2xl bg-gradient-to-br from-yellow-400 to-yellow-300 text-gray-900 font-bold text-center text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all">
+                        Science</div>
+                    <div
+                        class="p-6 rounded-2xl bg-gradient-to-br from-yellow-400 to-yellow-300 text-gray-900 font-bold text-center text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all">
+                        All Subjects</div>
+                </div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                    <div
+                        class="p-6 rounded-2xl bg-white border-2 border-yellow-200 shadow-lg hover:shadow-xl hover:border-yellow-400 transition-all text-center">
+                        <div class="text-4xl mb-3">📚</div>
+                        <h3 class="text-xl font-bold text-gray-900">Daily Classes</h3>
+                    </div>
+                    <div
+                        class="p-6 rounded-2xl bg-white border-2 border-yellow-200 shadow-lg hover:shadow-xl hover:border-yellow-400 transition-all text-center">
+                        <div class="text-4xl mb-3">✍️</div>
+                        <h3 class="text-xl font-bold text-gray-900">Daily Homework</h3>
+                    </div>
+                    <div
+                        class="p-6 rounded-2xl bg-white border-2 border-yellow-200 shadow-lg hover:shadow-xl hover:border-yellow-400 transition-all text-center">
+                        <div class="text-4xl mb-3">📝</div>
+                        <h3 class="text-xl font-bold text-gray-900">Weekly Tests</h3>
+                    </div>
+                    <div
+                        class="p-6 rounded-2xl bg-white border-2 border-yellow-200 shadow-lg hover:shadow-xl hover:border-yellow-400 transition-all text-center">
+                        <div class="text-4xl mb-3">📊</div>
+                        <h3 class="text-xl font-bold text-gray-900">Monthly Report</h3>
+                    </div>
+                    <div
+                        class="p-6 rounded-2xl bg-white border-2 border-yellow-200 shadow-lg hover:shadow-xl hover:border-yellow-400 transition-all text-center">
+                        <div class="text-4xl mb-3">👨‍🏫</div>
+                        <h3 class="text-xl font-bold text-gray-900">Personal Attention</h3>
+                    </div>
+                    <div
+                        class="p-6 rounded-2xl bg-white border-2 border-yellow-200 shadow-lg hover:shadow-xl hover:border-yellow-400 transition-all text-center">
+                        <div class="text-4xl mb-3">🗣️</div>
+                        <h3 class="text-xl font-bold text-gray-900">Public Speaking</h3>
+                    </div>
+                    <div
+                        class="p-6 rounded-2xl bg-white border-2 border-yellow-200 shadow-lg hover:shadow-xl hover:border-yellow-400 transition-all text-center">
+                        <div class="text-4xl mb-3">🤝</div>
+                        <h3 class="text-xl font-bold text-gray-900">Academic Support</h3>
+                    </div>
+                    <div
+                        class="p-6 rounded-2xl bg-white border-2 border-yellow-200 shadow-lg hover:shadow-xl hover:border-yellow-400 transition-all text-center">
+                        <div class="text-4xl mb-3">🌟</div>
+                        <h3 class="text-xl font-bold text-gray-900">Expert Teachers</h3>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl p-8 border-2 border-yellow-200 shadow-lg text-center mb-8">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Why Parents Trust Us</h3>
+                    <div class="grid sm:grid-cols-3 gap-6">
+                        <div>
+                            <p class="text-4xl font-bold text-blue-600 mb-2">500+</p>
+                            <p class="font-semibold text-gray-700">Students Improved</p>
+                        </div>
+                        <div>
+                            <p class="text-4xl font-bold text-blue-600 mb-2">95%</p>
+                            <p class="font-semibold text-gray-700">Success Rate</p>
+                        </div>
+                        <div>
+                            <p class="text-4xl font-bold text-blue-600 mb-2">10+</p>
+                            <p class="font-semibold text-gray-700">Years Experience</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div
+                    class="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-8 text-white text-center mb-8 shadow-2xl">
+                    <p class="text-3xl font-bold mb-6">🎓 Academic Excellence For Kids - Enroll Today</p>
+                    <a href="https://wa.me/917067097574?text=I%20want%20to%20enroll%20my%20child%20in%20the%20kids%20coaching%20classes"
+                        class="bg-yellow-400 text-gray-900 font-bold px-8 py-3 rounded-md hover:bg-yellow-500 shadow-lg inline-block">Join
+                        Now</a>
+                </div>
+                <div class="text-center">
+                    <p class="text-gray-600 mb-4 font-semibold text-lg">Give your child the competitive edge they
+                        deserve!</p>
+                    <a href="https://wa.me/917067097574?text=I%20want%20to%20enroll%20my%20child%20in%20kids%20coaching"
+                        class="bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 font-bold px-8 py-4 text-lg rounded-md hover:shadow-xl shadow-lg inline-block">Start
+                        Coaching Today: 70670 97574 →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ASSIGNMENTS Section -->
+        <section id="assignments"
+            class="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 bg-gradient-to-br from-blue-50 via-white to-blue-50">
+            <div class="max-w-6xl mx-auto w-full relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl sm:text-6xl font-bold mb-4">
+                        <span class="gradient-text bg-gradient-to-r from-blue-600 to-blue-800">Edumax Academic
+                            Assignment Help</span>
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto">Quality solutions, on-time delivery, and expert
+                        support for all academic needs</p>
+                </div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+                    <div
+                        class="p-6 rounded-2xl bg-gradient-to-br from-yellow-400 to-yellow-300 text-gray-900 font-bold text-center text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all">
+                        Software</div>
+                    <div
+                        class="p-6 rounded-2xl bg-gradient-to-br from-yellow-400 to-yellow-300 text-gray-900 font-bold text-center text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all">
+                        Engineering</div>
+                    <div
+                        class="p-6 rounded-2xl bg-gradient-to-br from-yellow-400 to-yellow-300 text-gray-900 font-bold text-center text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all">
+                        Management</div>
+                    <div
+                        class="p-6 rounded-2xl bg-gradient-to-br from-yellow-400 to-yellow-300 text-gray-900 font-bold text-center text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all">
+                        All Subjects</div>
+                </div>
+                <div class="grid sm:grid-cols-2 gap-8 mb-16">
+                    <!-- Our Services Card -->
+                    <div class="p-10 rounded-3xl bg-white border-2 border-gray-100 shadow-2xl service-card group relative transition-all duration-300">
+                        <div class="flex items-center gap-4 mb-8">
+                            <div class="p-4 bg-blue-50 text-blue-600 rounded-2xl group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 text-3xl shadow-inner">📋</div>
+                            <h3 class="text-3xl font-bold text-gray-800">Our Services</h3>
+                        </div>
+                        <ul class="space-y-5 mb-10">
+                            <li class="flex items-center gap-4 group/item">
+                                <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-yellow-100 text-yellow-600 rounded-full group-hover/item:bg-yellow-400 group-hover/item:text-white transition-colors">✓</span>
+                                <span class="text-gray-700 font-semibold text-lg">Academic Assignments</span>
+                            </li>
+                            <li class="flex items-center gap-4 group/item">
+                                <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-yellow-100 text-yellow-600 rounded-full group-hover/item:bg-yellow-400 group-hover/item:text-white transition-colors">✓</span>
+                                <span class="text-gray-700 font-semibold text-lg">Lab Reports & Analysis</span>
+                            </li>
+                            <li class="flex items-center gap-4 group/item">
+                                <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-yellow-100 text-yellow-600 rounded-full group-hover/item:bg-yellow-400 group-hover/item:text-white transition-colors">✓</span>
+                                <span class="text-gray-700 font-semibold text-lg">Online Exam Support</span>
+                            </li>
+                            <li class="flex items-center gap-4 group/item">
+                                <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-yellow-100 text-yellow-600 rounded-full group-hover/item:bg-yellow-400 group-hover/item:text-white transition-colors">✓</span>
+                                <span class="text-gray-700 font-semibold text-lg">Thesis & Case Studies</span>
+                            </li>
+                            <li class="flex items-center gap-4 group/item">
+                                <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-yellow-100 text-yellow-600 rounded-full group-hover/item:bg-yellow-400 group-hover/item:text-white transition-colors">✓</span>
+                                <span class="text-gray-700 font-semibold text-lg">Homework Assistance</span>
+                            </li>
+                        </ul>
+                        <a href="https://wa.me/917067097574?text=Hi!%20I%20need%20help%20with%20my%20assignments." class="yellow-border-btn w-full">Hire An Expert Now →</a>
+                    </div>
+
+                    <!-- Why Choose Us Card -->
+                    <div class="p-10 rounded-3xl bg-blue-600 text-white shadow-2xl service-card relative overflow-hidden group">
+                        <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-white/5 rounded-full group-hover:scale-125 transition-all duration-700"></div>
+                        <div class="absolute -left-10 -top-10 w-40 h-40 bg-yellow-400/10 rounded-full blur-2xl"></div>
+                        
+                        <div class="flex items-center gap-4 mb-8 relative z-10">
+                            <div class="p-4 bg-white/10 backdrop-blur-md rounded-2xl text-3xl border border-white/20">✨</div>
+                            <h3 class="text-3xl font-bold">Why Choose Us?</h3>
+                        </div>
+                        <ul class="space-y-6 relative z-10 mb-10">
+                            <li class="flex items-center gap-5">
+                                <span class="text-yellow-400 text-2xl drop-shadow-lg">★</span>
+                                <span class="font-bold text-xl tracking-wide">100% On-Time Delivery</span>
+                            </li>
+                            <li class="flex items-center gap-5">
+                                <span class="text-yellow-400 text-2xl drop-shadow-lg">★</span>
+                                <span class="font-bold text-xl tracking-wide">Plagiarism Free Work</span>
+                            </li>
+                            <li class="flex items-center gap-5">
+                                <span class="text-yellow-400 text-2xl drop-shadow-lg">★</span>
+                                <span class="font-bold text-xl tracking-wide">Highly Affordable Fees</span>
+                            </li>
+                            <li class="flex items-center gap-5">
+                                <span class="text-yellow-400 text-2xl drop-shadow-lg">★</span>
+                                <span class="font-bold text-xl tracking-wide">Top Academic Grades</span>
+                            </li>
+                            <li class="flex items-center gap-5">
+                                <span class="text-yellow-400 text-2xl drop-shadow-lg">★</span>
+                                <span class="font-bold text-xl tracking-wide">Round-the-Clock Support</span>
+                            </li>
+                        </ul>
+                        <div class="relative z-10">
+                            <a href="https://wa.me/917067097574?text=Tell%20me%20more%20about%20your%20assignment%20services." class="inline-block w-full py-4 bg-white text-blue-600 font-extrabold rounded-full hover:bg-yellow-400 hover:text-gray-900 transition-all shadow-2xl text-center text-lg">Inquire Today</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <p class="text-gray-500 font-medium mb-4 italic">Trusted by 2000+ students worldwide for academic success</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT Section -->
+        <section id="contact"
+            class="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 bg-gradient-to-br from-white via-gray-50 to-white">
+            <div class="max-w-3xl mx-auto w-full text-center relative z-10">
+                <h2 class="text-5xl sm:text-6xl font-bold mb-6">
+                    <span class="gradient-text bg-gradient-to-r from-blue-600 to-blue-800">Ready to Transform?</span>
+                </h2>
+                <p class="text-xl text-gray-600 mb-12">Join hundreds of students who have achieved their learning goals
+                    with Edumax</p>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                    <!-- English Contact -->
+                    <div class="bg-white p-4 rounded-3xl border-2 border-gray-100 shadow-xl hover:shadow-2xl transition-all group">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center text-xl shadow-lg group-hover:scale-110 transition-transform">💬</div>
+                            <div class="text-left">
+                                <p class="text-[10px] font-bold text-blue-600 uppercase tracking-wider">English Speaking</p>
+                                <h3 class="text-md font-extrabold text-gray-900">Call/WhatsApp</h3>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/919039662559" class="block w-full py-3 bg-blue-50 text-blue-600 text-lg font-black rounded-xl hover:bg-blue-600 hover:text-white transition-all text-center whitespace-nowrap">
+                            +91 90396 62559
+                        </a>
+                    </div>
+
+                    <!-- Kids Contact -->
+                    <div class="bg-white p-4 rounded-3xl border-2 border-gray-100 shadow-xl hover:shadow-2xl transition-all group">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-12 h-12 bg-yellow-400 text-gray-900 rounded-xl flex items-center justify-center text-xl shadow-lg group-hover:scale-110 transition-transform">🎒</div>
+                            <div class="text-left">
+                                <p class="text-[10px] font-bold text-yellow-600 uppercase tracking-wider">Kids Coaching</p>
+                                <h3 class="text-md font-extrabold text-gray-900">Classes 1-8</h3>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/917067097574" class="block w-full py-3 bg-yellow-50 text-yellow-600 text-lg font-black rounded-xl hover:bg-yellow-400 hover:text-gray-900 transition-all text-center whitespace-nowrap">
+                            +91 70670 97574
+                        </a>
+                    </div>
+
+                    <!-- Assignments Contact -->
+                    <div class="bg-white p-4 rounded-3xl border-2 border-gray-100 shadow-xl hover:shadow-2xl transition-all group">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-12 h-12 bg-purple-600 text-white rounded-xl flex items-center justify-center text-xl shadow-lg group-hover:scale-110 transition-transform">📝</div>
+                            <div class="text-left">
+                                <p class="text-[10px] font-bold text-purple-600 uppercase tracking-wider">Assignments</p>
+                                <h3 class="text-md font-extrabold text-gray-900">Academic Help</h3>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/917067097574?text=Hi!%20I%20need%20help%20with%20my%20assignments." class="block w-full py-3 bg-purple-50 text-purple-600 text-lg font-black rounded-xl hover:bg-purple-600 hover:text-white transition-all text-center whitespace-nowrap">
+                            +91 70670 97574
+                        </a>
+                    </div>
+
+                    <!-- Digital Marketing Contact -->
+                    <div class="bg-white p-4 rounded-3xl border-2 border-gray-100 shadow-xl hover:shadow-2xl transition-all group" style="border-color: rgba(168,85,247,0.3);">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-12 h-12 text-white rounded-xl flex items-center justify-center text-xl shadow-lg group-hover:scale-110 transition-transform" style="background: linear-gradient(135deg, #a855f7, #3b82f6);">📊</div>
+                            <div class="text-left">
+                                <p class="text-[10px] font-bold uppercase tracking-wider" style="color: #a855f7;">Digital Marketing</p>
+                                <h3 class="text-md font-extrabold text-gray-900">₹3,000/Month</h3>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/919039662559?text=Hi!%20I%20want%20to%20enroll%20in%20the%20Digital%20Marketing%20course" class="block w-full py-3 text-white text-lg font-black rounded-xl hover:opacity-90 transition-all text-center whitespace-nowrap" style="background: linear-gradient(90deg, #a855f7, #3b82f6);">
+                            +91 90396 62559
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Consolidated Support Info Card -->
+                <div class="bg-gray-50 rounded-[2rem] p-6 sm:p-8 border-2 border-gray-100 shadow-md">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="flex items-start gap-4">
+                            <span class="text-2xl mt-1">✉️</span>
+                            <div class="text-left">
+                                <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Email Address</p>
+                                <a href="mailto:vjain206542@gmail.com" class="text-sm font-bold text-gray-800 hover:text-blue-600 transition-colors whitespace-nowrap">vjain206542@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="text-2xl mt-1">📍</span>
+                            <div class="text-left">
+                                <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Presence</p>
+                                <p class="text-sm font-bold text-gray-800">Online (Available Globally)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="text-2xl mt-1">⏰</span>
+                            <div class="text-left">
+                                <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Response Time</p>
+                                <p class="text-sm font-bold text-gray-800">Available 9 AM - 10 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8">
+                    <a href="https://wa.me/919039662559?text=Hi!%20I%20want%20to%20join%20Edumax%20Institute.%20Tell%20me%20more%20about%20your%20courses."
+                        class="px-8 py-4 text-lg font-bold bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 rounded-md hover:shadow-xl shadow-lg transition-all hover:scale-105 inline-block">Start
+                        Your Journey Today →</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/919039662559"
+        class="fixed bottom-8 right-8 z-50 group transition-all duration-300 hover:scale-110 block"
+        target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" class="w-16 h-16 drop-shadow-2xl">
+    </a>
+
+    <footer class="bg-gradient-to-r from-gray-900 to-gray-800 text-white py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+            <div>
+                <h3 class="text-lg font-bold mb-4">Edumax</h3>
+                <p class="text-gray-400 mb-6">Transforming education, one student at a time</p>
+                <!-- Social Icons -->
+                <div class="flex items-center gap-4">
+                    <a href="https://wa.me/919039662559" target="_blank" class="w-10 h-10 flex items-center justify-center bg-[#25D366] text-white rounded-full hover:scale-110 transition-transform shadow-lg" title="WhatsApp">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-whatsapp"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" class="w-10 h-10 flex items-center justify-center bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white rounded-full hover:scale-110 transition-transform shadow-lg" title="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.805.249 2.227.412.56.216.96.474 1.38.894.42.42.678.82.894 1.38.163.422.358 1.057.412 2.227.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.249 1.805-.412 2.227-.216.56-.474.96-.894 1.38-.42.42-.82.678-1.38.894-.422.163-1.057.358-2.227.412-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.805-.249-2.227-.412-.56-.216-.96-.474-1.38-.894-.42-.42-.678-.82-.894-1.38-.163-.422-.358-1.057-.412-2.227-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.054-1.17.249-1.805.412-2.227.216-.56.474-.96.894-1.38.42-.42.82-.678 1.38-.894.422-.163 1.057-.358 2.227-.412 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-1.277.057-2.148.26-2.911.556-.788.307-1.457.718-2.122 1.383-.665.665-1.076 1.334-1.383 2.122-.296.763-.499 1.634-.556 2.911-.058 1.28-.072 1.688-.072 4.947s.014 3.667.072 4.947c.057 1.277.26 2.148.556 2.911.307.788.718 1.457 1.383 2.122.665.665 1.334 1.076 2.122 1.383.763.296 1.634.499 2.911.556 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c1.277-.057 2.148-.26 2.911-.556.788-.307 1.457-.718 2.122-1.383.665-.665 1.076-1.334 1.383-2.122.763-.296 1.634-.499 2.911-.556 1.28-.058 1.688-.072 4.947-.072s3.667.014 4.947-.072c1.277-.057 2.148-.26 2.911-.556.788-.307 1.457-.718 2.122-1.383.665-.665 1.076-1.334 1.383-2.122.762-.296 1.633-.499 2.911-.556 1.28-.058 1.688-.072 4.947-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" class="w-10 h-10 flex items-center justify-center bg-[#0077b5] text-white rounded-full hover:scale-110 transition-transform shadow-lg" title="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Quick Links</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="index.html" class="hover:text-orange-400 transition-colors" style="text-decoration:none;">🏗️ Construction A to Z</a></li>
+                    <li><button onclick="scrollToSection('digital-marketing')" class="hover:text-purple-400 transition-colors">📊 Digital Marketing</button></li>
+                    <li><button onclick="scrollToSection('english')">English Speaking</button></li>
+                    <li><button onclick="scrollToSection('kids')">Kids Coaching</button></li>
+                    <li><button onclick="scrollToSection('assignments')">Assignments</button></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Support</h4>
+                <p class="text-gray-400 text-sm">English: <a href="https://wa.me/919039662559"
+                        class="hover:text-white transition-colors">+91 90396 62559</a><br>Kids & Assignments: <a
+                        href="https://wa.me/917067097574" class="hover:text-white transition-colors">+91 70670
+                        97574</a><br><a href="mailto:vjain206542@gmail.com"
+                        class="hover:text-white transition-colors">vjain206542@gmail.com</a></p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Contact</h4>
+                <p class="text-gray-400 text-sm">Available 9 AM - 10 PM (IST)</p>
+            </div>
+        </div>
+        <div class="border-t border-gray-700 pt-8 text-center text-gray-400 italic">© 2024 Edumax Institute. All rights
+            reserved.</div>
+    </footer>
+
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="fixed inset-0 z-[100] hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden transform transition-all duration-300">
+            <div class="bg-blue-600 p-6 text-white flex justify-between items-center">
+                <h3 class="text-2xl font-bold">Fee Payment</h3>
+                <button onclick="closePaymentModal()" class="text-white hover:text-yellow-400 transition-colors">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <form id="payment-form" class="p-8 space-y-4">
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Student Name</label>
+                    <input type="text" id="student-name" required class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-blue-600 outline-none transition-all" placeholder="Enter full name">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Phone Number</label>
+                    <input type="tel" id="student-phone" required class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-blue-600 outline-none transition-all" placeholder="Enter phone number">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Email Address</label>
+                    <input type="email" id="student-email" required class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-blue-600 outline-none transition-all" placeholder="Enter email address">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Course Name</label>
+                    <select id="course-name" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-blue-600 outline-none transition-all">
+                        <option value="Digital Marketing">Digital Marketing</option>
+                        <option value="English Speaking">English Speaking</option>
+                        <option value="Kids Coaching">Kids Coaching</option>
+                        <option value="Assignment Help">Assignment Help</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Fee Amount (₹)</label>
+                    <input type="number" id="fee-amount" required class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-blue-600 outline-none transition-all" placeholder="Enter amount">
+                </div>
+                <button type="submit" class="w-full py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-all shadow-lg flex items-center justify-center gap-2">
+                    Proceed to Pay Online
+                </button>
+                <p class="text-center text-xs text-gray-400">Secure payment via Razorpay</p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Payment Success Modal -->
+    <div id="success-modal" class="fixed inset-0 z-[110] hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden transform transition-all duration-300 text-center p-8">
+            <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <h3 class="text-3xl font-extrabold text-gray-900 mb-2">Payment Successful!</h3>
+            <p class="text-gray-600 mb-8">Thank you for enrolling in Edumax Institute. Your payment has been confirmed.</p>
+            
+            <div class="bg-gray-50 rounded-xl p-6 mb-8 text-left space-y-3 border border-gray-100">
+                <div class="flex justify-between">
+                    <span class="text-gray-500 text-sm font-semibold uppercase">Student</span>
+                    <span id="receipt-name" class="font-bold text-gray-800"></span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-500 text-sm font-semibold uppercase">Course</span>
+                    <span id="receipt-course" class="font-bold text-gray-800"></span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-500 text-sm font-semibold uppercase">Amount Paid</span>
+                    <span id="receipt-amount" class="font-bold text-blue-600"></span>
+                </div>
+                <div class="flex justify-between border-t border-gray-200 pt-3">
+                    <span class="text-gray-500 text-sm font-semibold uppercase">Payment ID</span>
+                    <span id="receipt-id" class="text-xs font-mono text-gray-600"></span>
+                </div>
+            </div>
+
+            <div class="space-y-3">
+                <button onclick="window.print()" class="w-full py-4 bg-gray-900 text-white font-bold rounded-xl hover:bg-black transition-all shadow-lg flex items-center justify-center gap-2">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                    Print Receipt
+                </button>
+                <a id="whatsapp-confirm-btn" href="#" target="_blank" class="w-full py-4 bg-[#25D366] text-white font-bold rounded-xl hover:bg-[#128C7E] transition-all shadow-lg flex items-center justify-center gap-2">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                    Share on WhatsApp
+                </a>
+                <button onclick="closeSuccessModal()" class="w-full py-3 text-gray-500 font-bold hover:text-gray-700 transition-colors">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
