@@ -1,803 +1,1351 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edumax Institute | Digital Marketing & English Courses</title>
-    <!-- Tailwind CSS Play CDN -->
+    <title>Construction A to Z | EduMax.world – Complete Practical Construction Training</title>
+    <meta name="description" content="Learn how a complete residential bungalow project is planned, designed, estimated, constructed, finished, and handed over. Live Online Zoom Classes. New Batches Every Month.">
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <!-- Razorpay SDK -->
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
+        :root {
+            --orange: #f97316;
+            --dark-orange: #ea580c;
+            --green: #16a34a;
+            --dark-green: #15803d;
+            --blue: #1d4ed8;
+            --dark-blue: #1e3a8a;
+            --yellow: #eab308;
+            --gray-dark: #1f2937;
         }
 
-        .scroll-smooth {
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1f2937;
+            overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
-        .gradient-text {
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
+        /* ====== HEADER ====== */
+        #const-header {
+            background: #fff;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .const-nav a, .const-nav button {
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: #374151;
+            transition: color 0.2s;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+        .const-nav a:hover { color: var(--orange); }
+        .const-nav a.active { color: var(--orange); border-bottom: 2px solid var(--orange); padding-bottom: 2px; }
+
+        /* ====== HERO ====== */
+        #const-hero {
+            background: linear-gradient(135deg, #fefce8 0%, #fff7ed 40%, #fff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #22c55e;
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 14px;
+            border-radius: 20px;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            color: var(--gray-dark);
+        }
+        .hero-title span.orange { color: var(--orange); }
+        .hero-title span.blue { color: var(--blue); }
+
+        .hero-feature-chip {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #374151;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+        .hero-feature-chip .chip-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .btn-orange {
+            background: var(--orange);
+            color: #fff;
+            font-weight: 700;
+            padding: 12px 28px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s, transform 0.2s;
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+        .btn-orange:hover { background: var(--dark-orange); transform: translateY(-1px); }
+
+        .btn-outline {
+            background: transparent;
+            color: #374151;
+            font-weight: 700;
+            padding: 12px 28px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 2px solid #374151;
+            transition: all 0.2s;
+            cursor: pointer;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+        .btn-outline:hover { background: #374151; color: #fff; }
+
+        .btn-whatsapp {
+            background: #25d366;
+            color: #fff;
+            font-weight: 700;
+            padding: 12px 28px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+        .btn-whatsapp:hover { background: #128c7e; }
+
+        .from-to-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--orange);
+            color: #fff;
+            border-radius: 50%;
+            width: 90px;
+            height: 90px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.65rem;
+            text-align: center;
+            line-height: 1.2;
+            box-shadow: 0 4px 16px rgba(249,115,22,0.35);
+        }
+
+        /* ====== STATS BAR ====== */
+        .stats-bar {
+            background: #fff;
+            border-top: 3px solid var(--orange);
+            border-bottom: 3px solid var(--orange);
+        }
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 16px 8px;
+            flex: 1;
+            min-width: 100px;
+        }
+        .stat-icon { font-size: 1.5rem; margin-bottom: 4px; }
+        .stat-value { font-weight: 800; font-size: 1rem; color: var(--gray-dark); }
+        .stat-label { font-size: 0.72rem; color: #6b7280; font-weight: 500; }
+
+        /* ====== SECTION HEADING ====== */
+        .section-heading {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.6rem;
+            color: var(--gray-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-heading .heading-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        /* ====== SCHEDULE ====== */
+        .schedule-card {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 100%);
+            border-radius: 16px;
+            padding: 24px;
+            color: #fff;
+        }
+        .schedule-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85rem;
+        }
+        .schedule-row:last-child { border-bottom: none; }
+        .schedule-label { color: rgba(255,255,255,0.75); width: 160px; flex-shrink: 0; }
+        .schedule-value { color: #fff; font-weight: 600; }
+        .new-batch-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #22c55e;
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 3px 12px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+
+        /* ====== CURRICULUM ====== */
+        #curriculum { background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 100%); }
+        .curriculum-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+        }
+        @media (max-width: 1024px) { .curriculum-grid { grid-template-columns: repeat(4, 1fr); } }
+        @media (max-width: 768px) { .curriculum-grid { grid-template-columns: repeat(2, 1fr); } }
+
+        .module-card {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 10px;
+            padding: 14px 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            transition: all 0.25s;
+        }
+        .module-card:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.35);
+            transform: translateY(-2px);
+        }
+        .module-num {
+            background: var(--orange);
+            color: #fff;
+            width: 26px;
+            height: 26px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .module-title { color: #fff; font-size: 0.78rem; font-weight: 600; line-height: 1.3; }
+
+        .view-curriculum-btn {
+            background: var(--orange);
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 10px 22px;
+            border-radius: 6px;
+            white-space: nowrap;
+            transition: background 0.2s;
+            text-decoration: none;
+        }
+        .view-curriculum-btn:hover { background: var(--dark-orange); }
+
+        /* ====== FEES ====== */
+        #fees-info { background: #f9fafb; }
+        .fee-card {
+            background: #fff;
+            border-radius: 14px;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+            height: 100%;
+        }
+        .fee-amount-box {
+            background: linear-gradient(135deg, #fff7ed, #ffedd5);
+            border: 2px solid var(--orange);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            margin: 16px 0;
+        }
+        .regular-price { text-decoration: line-through; color: #9ca3af; font-size: 0.9rem; }
+        .special-price { font-size: 2rem; font-weight: 900; color: var(--orange); }
+        .limited-badge {
+            background: #ef4444;
+            color: #fff;
+            font-size: 0.68rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 4px;
+        }
+
+        .check-list { list-style: none; padding: 0; margin: 0; }
+        .check-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 6px 0;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+        }
+        .check-list li .check-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* ====== FAQ ====== */
+        .faq-item {
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            padding: 16px 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #374151;
+            background: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            border: none;
+            transition: background 0.2s;
+        }
+        .faq-question:hover { background: #f9fafb; }
+        .faq-answer {
+            display: none;
+            padding: 0 20px 16px;
+            font-size: 0.875rem;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+        .faq-answer.open { display: block; }
+        .faq-icon { transition: transform 0.2s; }
+        .faq-icon.rotate { transform: rotate(180deg); }
+
+        /* ====== FORM ====== */
+        .form-input {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            color: #374151;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background: #fff;
+            font-family: 'Inter', sans-serif;
+        }
+        .form-input:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(249,115,22,0.12); }
+        .form-label { font-size: 0.8rem; font-weight: 600; color: #374151; margin-bottom: 4px; display: block; }
+        .form-label span.req { color: #ef4444; }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--orange);
+            color: #fff;
+            font-weight: 800;
+            font-size: 1rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            letter-spacing: 0.03em;
+            font-family: 'Inter', sans-serif;
+        }
+        .submit-btn:hover { background: var(--dark-orange); transform: translateY(-1px); }
+
+        /* ====== CONTACT ====== */
+        .contact-box {
+            background: #22c55e;
+            border-radius: 14px;
+            padding: 24px;
+            color: #fff;
+        }
+        .contact-phone {
+            font-size: 1.5rem;
+            font-weight: 800;
+            display: block;
+            margin: 8px 0;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        /* ====== RECORDED ====== */
+        #recorded {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 80%, #2563eb 100%);
+        }
+
+        /* ====== FLOATING WA ====== */
+        .float-wa {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 999;
+            transition: transform 0.25s;
+        }
+        .float-wa:hover { transform: scale(1.1); }
+
+        /* ====== FOOTER ====== */
+        #const-footer { background: #111827; }
+
+        /* ====== FADE IN ====== */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Preloader */
+        #const-preloader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s;
+        }
+        .preloader-ring {
+            width: 60px;
+            height: 60px;
+            border: 4px solid #f3f4f6;
+            border-top-color: var(--orange);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Responsive grids */
+        @media (max-width: 900px) {
+            .fees-grid { grid-template-columns: 1fr 1fr !important; }
+            .hero-grid { grid-template-columns: 1fr !important; }
+            .about-grid { grid-template-columns: 1fr !important; }
+            .faq-reg-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 600px) {
+            .fees-grid { grid-template-columns: 1fr !important; }
+            .curriculum-grid { grid-template-columns: 1fr 1fr !important; }
         }
     </style>
 </head>
 
-<body class="min-h-screen bg-white text-gray-900 overflow-x-hidden scroll-smooth" id="body-content">
+<body id="const-body">
 
     <!-- Preloader -->
-    <div id="preloader" class="fixed inset-0 z-[100] bg-white flex flex-col items-center justify-center transition-opacity duration-500">
-        <div class="relative flex flex-col items-center justify-center">
-            <!-- Rotating Ring -->
-            <div class="absolute w-40 h-40 border-4 border-blue-50 border-t-blue-600 rounded-full animate-spin"></div>
-            <!-- Pulsing Logo -->
-            <img src="images/edumax-logo.png" alt="Edumax" class="relative z-10 h-24 w-auto animate-pulse transform hover:scale-110 transition-transform">
-            
-            <div class="mt-12 w-48 h-1 bg-gray-100 rounded-full overflow-hidden relative">
-                <div id="preloader-bar" class="h-full bg-gradient-to-r from-blue-600 to-yellow-400 transition-all duration-[500ms] ease-out w-0"></div>
-            </div>
-        </div>
+    <div id="const-preloader">
+        <img src="images/edumax-logo.png" alt="EduMax" style="height:70px; margin-bottom:20px;">
+        <div class="preloader-ring"></div>
+        <p style="margin-top:16px; font-weight:600; color:#6b7280; font-size:0.875rem;">Loading...</p>
     </div>
 
-    <!-- Sticky Header -->
-    <header id="main-header" class="sticky top-0 z-40 transition-all duration-300 bg-white shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <img src="images/edumax-logo.png" alt="Edumax Institute" class="h-20 sm:h-28 w-auto drop-shadow-sm">
-            </div>
+    <!-- ====== HEADER ====== -->
+    <header id="const-header">
+        <div style="max-width:1280px; margin:0 auto; padding:0 16px; display:flex; align-items:center; justify-content:space-between; height:64px;">
+            <a href="index.html" style="display:flex; align-items:center; gap:8px; text-decoration:none; flex-shrink:0;">
+                <img src="images/edumax-logo.png" alt="EduMax.world" style="height:52px; width:auto;">
+            </a>
 
-            <!-- Desktop Menu -->
-            <nav class="hidden md:flex items-center gap-8" id="desktop-nav">
-                <button onclick="scrollToSection('home')"
-                    class="nav-item font-semibold text-gray-700 hover:text-blue-600 transition-all duration-300"
-                    data-section="home">Home</button>
-                <button onclick="scrollToSection('digital-marketing')"
-                    class="nav-item font-semibold text-blue-600 border-b-2 border-yellow-400 transition-all duration-300"
-                    data-section="digital-marketing">Digital Marketing</button>
-                <button onclick="scrollToSection('english')"
-                    class="nav-item font-semibold text-gray-700 hover:text-blue-600"
-                    data-section="english">English</button>
-                <button onclick="scrollToSection('kids')"
-                    class="nav-item font-semibold text-gray-700 hover:text-blue-600" data-section="kids">Kids</button>
-                <button onclick="scrollToSection('assignments')"
-                    class="nav-item font-semibold text-gray-700 hover:text-blue-600"
-                    data-section="assignments">Assignments</button>
-                <button onclick="scrollToSection('contact')"
-                    class="nav-item font-semibold text-gray-700 hover:text-blue-600"
-                    data-section="contact">Contact</button>
+            <nav class="const-nav" id="desktop-const-nav" style="display:flex; align-items:center; gap:20px;">
+                <a href="#const-hero">Home</a>
+                <a href="#const-hero" class="active">Construction A to Z</a>
+                <a href="courses.html">All Courses</a>
+                <a href="#trainers">Our Trainers</a>
+                <a href="#about-course">About Us</a>
+                <a href="#const-contact">Contact</a>
             </nav>
 
-            <div class="hidden sm:flex items-center gap-3">
-                <button onclick="openPaymentModal()"
-                    class="bg-blue-600 text-white font-bold px-6 py-2 rounded-md hover:bg-blue-700 shadow-lg inline-block text-center whitespace-nowrap transition-all">
-                    Pay Fee
-                </button>
-                <a href="https://wa.me/919039662559?text=Hi!%20I%20want%20to%20enroll%20in%20Edumax%20Institute%20today"
-                    class="bg-yellow-400 text-gray-900 font-bold px-6 py-2 rounded-md hover:bg-yellow-500 shadow-lg inline-block text-center whitespace-nowrap">
-                    Enroll Now
+            <div style="display:flex; align-items:center; gap:10px; flex-shrink:0;">
+                <a href="#registration" class="btn-orange" style="font-size:0.85rem; padding:10px 20px;">
+                    Enrol Now <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i>
                 </a>
+                <button id="const-mobile-btn" style="display:none; background:none; border:none; cursor:pointer; padding:4px;" onclick="toggleConstMenu()">
+                    <i class="fas fa-bars" style="font-size:1.2rem; color:#374151;"></i>
+                </button>
             </div>
-
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden p-2 hover:bg-gray-100 rounded-lg">
-                <svg id="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg>
-                <svg id="close-icon" class="hidden" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
-            <nav class="flex flex-col py-2">
-                <button onclick="scrollToSection('home')"
-                    class="px-4 py-3 text-left font-semibold text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition-colors">Home</button>
-                <button onclick="scrollToSection('digital-marketing')"
-                    class="px-4 py-3 text-left font-semibold text-blue-600 bg-blue-50 hover:bg-blue-100 transition-colors">📊 Digital Marketing</button>
-                <button onclick="scrollToSection('english')"
-                    class="px-4 py-3 text-left font-semibold text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition-colors">English</button>
-                <button onclick="scrollToSection('kids')"
-                    class="px-4 py-3 text-left font-semibold text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition-colors">Kids</button>
-                <button onclick="scrollToSection('assignments')"
-                    class="px-4 py-3 text-left font-semibold text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition-colors">Assignments</button>
-                <button onclick="scrollToSection('contact')"
-                    class="px-4 py-3 text-left font-semibold text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition-colors">Contact</button>
-                <button onclick="openPaymentModal()"
-                    class="mx-4 my-2 px-4 py-3 bg-blue-600 text-white font-bold rounded-md text-center">Pay Fee Online</button>
-                <a href="https://wa.me/919039662559?text=Hi!%20I%20want%20to%20enroll%20in%20Digital%20Marketing%20course"
-                    class="px-4 py-3">
-                    <div class="w-full bg-yellow-400 text-gray-900 font-bold px-6 py-2 rounded-md text-center">Enroll Now
-                    </div>
-                </a>
-            </nav>
+        <div id="mobile-const-menu" style="display:none; flex-direction:column; background:#fff; border-top:1px solid #e5e7eb; padding:8px 0;">
+            <a href="#const-hero" style="padding:12px 20px; font-weight:600; color:#374151; text-decoration:none; border-bottom:1px solid #f3f4f6; display:block;">Home</a>
+            <a href="#const-hero" style="padding:12px 20px; font-weight:600; color:var(--orange); text-decoration:none; border-bottom:1px solid #f3f4f6; display:block;">Construction A to Z</a>
+            <a href="courses.html" style="padding:12px 20px; font-weight:600; color:#374151; text-decoration:none; border-bottom:1px solid #f3f4f6; display:block;">All Courses</a>
+            <a href="#trainers" style="padding:12px 20px; font-weight:600; color:#374151; text-decoration:none; border-bottom:1px solid #f3f4f6; display:block;">Our Trainers</a>
+            <a href="#about-course" style="padding:12px 20px; font-weight:600; color:#374151; text-decoration:none; border-bottom:1px solid #f3f4f6; display:block;">About Us</a>
+            <a href="#const-contact" style="padding:12px 20px; font-weight:600; color:#374151; text-decoration:none; border-bottom:1px solid #f3f4f6; display:block;">Contact</a>
+            <div style="padding:12px 20px;">
+                <a href="#registration" class="btn-orange" style="justify-content:center; width:100%;">Enrol Now</a>
+            </div>
         </div>
     </header>
 
-    <main class="overflow-hidden">
-        <!-- HERO Section -->
-        <section id="home"
-            class="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-12 pb-20 bg-gradient-to-br from-blue-50 via-white to-blue-50 overflow-hidden">
-            <div
-                class="absolute top-10 right-5 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse">
-            </div>
-            <div
-                class="absolute -bottom-20 left-10 w-80 h-80 bg-yellow-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse">
-            </div>
+    <main>
 
-            <div class="relative max-w-5xl mx-auto text-center z-10">
-                <div class="inline-block mb-6 px-4 py-2 bg-white rounded-full shadow-md border border-gray-200">
-                    <p class="text-sm font-semibold text-gray-700">✓ <span class="text-blue-600">100+ Students</span> |
-                        Daily Practice | Expert Guidance</p>
-                </div>
-                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-                    <span class="gradient-text bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800">Transform
-                        Your</span><br>
-                    <span class="gradient-text bg-gradient-to-r from-yellow-400 to-yellow-500">Learning Journey</span>
-                </h1>
-                <p class="text-xl sm:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">Master English
-                    speaking, ace your academics, and build confidence with a globally trusted education institute</p>
+        <!-- ====== HERO ====== -->
+        <section id="const-hero" style="padding:48px 16px 32px; min-height:80vh; display:flex; align-items:center;">
+            <div style="max-width:1280px; margin:0 auto; width:100%;">
+                <div class="hero-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;">
+                    <!-- Left -->
+                    <div class="fade-in-up">
+                        <span class="hero-badge" style="margin-bottom:16px;">
+                            <i class="fas fa-calendar-alt"></i> NEW BATCHES EVERY MONTH
+                        </span>
 
-                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                    <button onclick="scrollToSection('digital-marketing')"
-                        class="px-8 py-4 text-lg font-bold bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-md hover:shadow-xl shadow-lg transition-all hover:scale-105 inline-block whitespace-nowrap">
-                        🚀 Digital Marketing Course →
-                    </button>
-                    <a href="https://wa.me/919039662559?text=Hi!%20I%20want%20to%20join%20the%20English%20speaking%20course"
-                        class="px-8 py-4 text-lg font-bold bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 rounded-md hover:shadow-xl shadow-lg transition-all hover:scale-105 inline-block whitespace-nowrap">
-                        Join English Speaking →
-                    </a>
-                    <a href="https://wa.me/917067097574?text=Hi!%20I%20want%20to%20join%20the%20Kids%20coaching%20classes"
-                        class="px-8 py-4 text-lg font-bold border-2 border-blue-600 text-blue-600 hover:bg-blue-50 rounded-md transition-all inline-block whitespace-nowrap">
-                        Join Kids Coaching →
-                    </a>
-                </div>
-                <div class="mb-8">
-                    <button onclick="openPaymentModal()"
-                        class="px-10 py-4 text-xl font-extrabold bg-blue-600 text-white rounded-xl hover:bg-blue-700 shadow-2xl transition-all hover:scale-105 inline-block">
-                        Pay Fee Online
-                    </button>
-                </div>
-                <p class="text-gray-600 font-semibold mb-2">WhatsApp: <a href="https://wa.me/919039662559"
-                        class="text-blue-600 hover:underline text-lg">+91 90396 62559</a></p>
-                <p class="text-gray-600 font-semibold">Email: <a href="mailto:vjain206542@gmail.com"
-                        class="text-blue-600 hover:underline text-lg">vjain206542@gmail.com</a></p>
-            </div>
-        </section>
+                        <h1 class="hero-title" style="font-size:3.2rem; line-height:1.05; margin:12px 0 6px;">
+                            <span class="orange">CONSTRUCTION</span><br>
+                            <span class="orange">A TO Z</span>
+                        </h1>
+                        <p style="font-size:1.05rem; font-weight:700; color:#374151; margin-bottom:16px;">Complete Practical Construction Training</p>
 
-        <!-- DIGITAL MARKETING Section -->
-        <section id="digital-marketing"
-            class="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 bg-gradient-to-br from-blue-50 via-white to-blue-50">
-            <div class="absolute top-10 right-5 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-            <div class="absolute -bottom-20 left-10 w-80 h-80 bg-yellow-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:20px;">
+                            <div class="hero-feature-chip">
+                                <div class="chip-icon" style="background:#dbeafe;"><i class="fas fa-video" style="color:#1d4ed8;"></i></div>
+                                <div>
+                                    <div style="font-size:0.8rem; font-weight:700;">Live On-line</div>
+                                    <div style="font-size:0.68rem; color:#6b7280;">Zoom Classes</div>
+                                </div>
+                            </div>
+                            <div class="hero-feature-chip">
+                                <div class="chip-icon" style="background:#dcfce7;"><i class="fas fa-tools" style="color:#16a34a;"></i></div>
+                                <div>
+                                    <div style="font-size:0.8rem; font-weight:700;">Practical</div>
+                                    <div style="font-size:0.68rem; color:#6b7280;">Project-Based Learning</div>
+                                </div>
+                            </div>
+                            <div class="hero-feature-chip">
+                                <div class="chip-icon" style="background:#fef9c3;"><i class="fas fa-map-marker-alt" style="color:#ca8a04;"></i></div>
+                                <div>
+                                    <div style="font-size:0.8rem; font-weight:700;">Pan India</div>
+                                    <div style="font-size:0.68rem; color:#6b7280;">All Over India</div>
+                                </div>
+                            </div>
+                            <div class="hero-feature-chip">
+                                <div class="chip-icon" style="background:#fce7f3;"><i class="fas fa-user-tie" style="color:#db2777;"></i></div>
+                                <div>
+                                    <div style="font-size:0.8rem; font-weight:700;">Learn from</div>
+                                    <div style="font-size:0.68rem; color:#6b7280;">Industry Experts</div>
+                                </div>
+                            </div>
+                        </div>
 
-            <div class="max-w-6xl mx-auto w-full relative z-10">
-                <!-- Heading -->
-                <div class="text-center mb-10">
-                    <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-4 bg-yellow-100 text-yellow-700 border border-yellow-300">✨ New Batch Starting Soon</span>
-                    <h2 class="text-5xl sm:text-6xl font-bold mb-3">
-                        <span class="gradient-text bg-gradient-to-r from-blue-600 to-blue-800">Digital Marketing</span>
-                    </h2>
-                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">From basics to advanced — master the skills that drive real business growth online</p>
-                </div>
+                        <p style="font-size:0.9rem; color:#4b5563; margin-bottom:24px; line-height:1.7;">
+                            Learn how a complete residential bungalow project is planned, designed, estimated, constructed, finished, and handed over.
+                        </p>
 
-                <!-- Duration pills -->
-                <div class="flex flex-wrap justify-center gap-3 mb-10">
-                    <span class="flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold bg-white border-2 border-blue-100 text-gray-700 shadow-sm">⏳ 3 Months Course</span>
-                    <span class="flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold bg-white border-2 border-blue-100 text-gray-700 shadow-sm">📅 Mon – Fri · 1 Hr Daily</span>
-                    <span class="flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold bg-white border-2 border-blue-100 text-gray-700 shadow-sm">📱 Online Available</span>
-                    <span class="flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-bold bg-yellow-400 text-gray-900 shadow-sm">💰 ₹3,000 / Month</span>
-                </div>
+                        <div style="display:flex; flex-wrap:wrap; gap:12px;">
+                            <a href="#registration" class="btn-orange">ENROL NOW <i class="fas fa-arrow-right"></i></a>
+                            <a href="#about-course" class="btn-outline">COURSE DETAILS</a>
+                            <a href="https://wa.me/917415026024?text=Hi!%20I%20want%20to%20enroll%20in%20Construction%20A%20to%20Z%20course" class="btn-whatsapp" target="_blank">
+                                <i class="fab fa-whatsapp" style="font-size:1.1rem;"></i> WHATSAPP US
+                            </a>
+                        </div>
+                    </div>
 
-                <!-- Curriculum Grid -->
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-10">
-                    <div class="feature-card group p-4 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all duration-300 flex items-center gap-3">
-                        <div class="p-2 bg-blue-50 rounded-lg shrink-0 group-hover:bg-blue-600 transition-colors duration-300 text-xl leading-none">📈</div>
-                        <p class="font-semibold text-gray-800 text-sm leading-tight">Basic to Advanced Digital Marketing</p>
+                    <!-- Right -->
+                    <div style="position:relative;" class="fade-in-up">
+                        <div class="from-to-badge">
+                            <span style="font-size:0.62rem;">From</span>
+                            <span style="font-size:0.78rem; font-weight:900;">Planning</span>
+                            <span style="font-size:0.62rem;">to</span>
+                            <span style="font-size:0.78rem; font-weight:900;">Handover</span>
+                        </div>
+                        <div style="background:linear-gradient(135deg,#dbeafe 0%,#bfdbfe 50%,#93c5fd 100%); border-radius:20px; height:380px; overflow:hidden; position:relative; box-shadow:0 20px 60px rgba(0,0,0,0.15); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; text-align:center; padding:24px;">
+                            <div style="font-size:5rem; filter:drop-shadow(0 4px 12px rgba(0,0,0,0.2));">🏗️</div>
+                            <div style="background:rgba(255,255,255,0.92); border-radius:12px; padding:14px 24px;">
+                                <p style="font-weight:800; font-size:1rem; color:#1d4ed8; margin:0;">G+1 / G+2 Residential</p>
+                                <p style="font-size:0.8rem; color:#4b5563; margin:4px 0 0;">Complete Bungalow Project</p>
+                            </div>
+                            <div style="display:flex; gap:8px; flex-wrap:wrap; justify-content:center;">
+                                <span style="background:#f97316; color:#fff; font-size:0.72rem; font-weight:700; padding:5px 12px; border-radius:20px;">Real Projects</span>
+                                <span style="background:#16a34a; color:#fff; font-size:0.72rem; font-weight:700; padding:5px 12px; border-radius:20px;">Real Skills</span>
+                                <span style="background:#1d4ed8; color:#fff; font-size:0.72rem; font-weight:700; padding:5px 12px; border-radius:20px;">Better Careers</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="feature-card group p-4 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all duration-300 flex items-center gap-3">
-                        <div class="p-2 bg-blue-50 rounded-lg shrink-0 group-hover:bg-blue-600 transition-colors duration-300 text-xl leading-none">📱</div>
-                        <p class="font-semibold text-gray-800 text-sm leading-tight">Social Media Marketing</p>
-                    </div>
-                    <div class="feature-card group p-4 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all duration-300 flex items-center gap-3">
-                        <div class="p-2 bg-blue-50 rounded-lg shrink-0 group-hover:bg-blue-600 transition-colors duration-300 text-xl leading-none">🎯</div>
-                        <p class="font-semibold text-gray-800 text-sm leading-tight">Facebook &amp; Instagram Ads</p>
-                    </div>
-                    <div class="feature-card group p-4 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all duration-300 flex items-center gap-3">
-                        <div class="p-2 bg-blue-50 rounded-lg shrink-0 group-hover:bg-blue-600 transition-colors duration-300 text-xl leading-none">🔍</div>
-                        <p class="font-semibold text-gray-800 text-sm leading-tight">Google Ads Fundamentals</p>
-                    </div>
-                    <div class="feature-card group p-4 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all duration-300 flex items-center gap-3">
-                        <div class="p-2 bg-blue-50 rounded-lg shrink-0 group-hover:bg-blue-600 transition-colors duration-300 text-xl leading-none">🌐</div>
-                        <p class="font-semibold text-gray-800 text-sm leading-tight">SEO &amp; Website Promotion</p>
-                    </div>
-                    <div class="feature-card group p-4 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all duration-300 flex items-center gap-3">
-                        <div class="p-2 bg-blue-50 rounded-lg shrink-0 group-hover:bg-blue-600 transition-colors duration-300 text-xl leading-none">✍️</div>
-                        <p class="font-semibold text-gray-800 text-sm leading-tight">Content Marketing Strategies</p>
-                    </div>
-                    <div class="feature-card group p-4 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all duration-300 flex items-center gap-3">
-                        <div class="p-2 bg-blue-50 rounded-lg shrink-0 group-hover:bg-blue-600 transition-colors duration-300 text-xl leading-none">🧲</div>
-                        <p class="font-semibold text-gray-800 text-sm leading-tight">Lead Generation Techniques</p>
-                    </div>
-                    <div class="feature-card group p-4 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all duration-300 flex items-center gap-3">
-                        <div class="p-2 bg-blue-50 rounded-lg shrink-0 group-hover:bg-blue-600 transition-colors duration-300 text-xl leading-none">💻</div>
-                        <p class="font-semibold text-gray-800 text-sm leading-tight">Practical Live Projects</p>
-                    </div>
-                    <div class="feature-card group p-4 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-xl hover:border-blue-400 transition-all duration-300 flex items-center gap-3">
-                        <div class="p-2 bg-blue-50 rounded-lg shrink-0 group-hover:bg-blue-600 transition-colors duration-300 text-xl leading-none">🏆</div>
-                        <p class="font-semibold text-gray-800 text-sm leading-tight">Certificate + Job-Oriented Training</p>
-                    </div>
-                </div>
-
-                <!-- CTA Banner -->
-                <div class="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-8 text-white text-center shadow-2xl">
-                    <p class="text-3xl font-bold mb-2">🚀 Start Your Digital Marketing Career Today!</p>
-                    <p class="text-blue-100 mb-6">Limited seats · Batch starting soon · Online classes available</p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-4">
-                        <a href="https://wa.me/919039662559?text=Hi!%20I%20want%20to%20enroll%20in%20the%20Digital%20Marketing%20course%20at%20Edumax"
-                            class="bg-yellow-400 text-gray-900 font-bold px-8 py-3 rounded-md hover:bg-yellow-500 shadow-lg inline-block transition-all hover:scale-105">Enroll on WhatsApp →</a>
-                        <a href="mailto:jain206542@gmail.com"
-                            class="bg-white/10 border border-white/30 text-white font-bold px-8 py-3 rounded-md hover:bg-white/20 inline-block transition-all">jain206542@gmail.com</a>
-                    </div>
-                    <p class="text-blue-200 font-semibold text-sm">📞 Call/WhatsApp: <a href="https://wa.me/919039662559" class="text-yellow-400 hover:underline">+91 90396 62559</a></p>
                 </div>
             </div>
         </section>
 
-        <!-- ENGLISH Section -->
-        <section id="english"
-            class="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 bg-gradient-to-br from-white via-gray-50 to-white">
-            <div class="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-blue-50 to-transparent"></div>
-            <div class="max-w-6xl mx-auto w-full relative z-10">
-                <div class="text-center mb-16">
-                    <h2 class="text-5xl sm:text-6xl font-bold mb-4">
-                        <span class="gradient-text bg-gradient-to-r from-blue-600 to-blue-800">Edumax English
-                            Speaking</span>
-                    </h2>
-                    <p class="text-xl text-gray-600 max-w-2xl mx-auto">Daily practice, expert guidance, and personalized
-                        feedback to boost your confidence</p>
+        <!-- ====== STATS BAR ====== -->
+        <section class="stats-bar">
+            <div style="max-width:1280px; margin:0 auto; padding:0 16px; display:flex; flex-wrap:wrap; justify-content:space-around;">
+                <div class="stat-item">
+                    <div class="stat-icon">🖥️</div>
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">Online Training</div>
                 </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                    <div
-                        class="feature-card group p-8 rounded-2xl bg-white border-2 border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300">
-                        <div class="icon-wrap mb-4 p-3 bg-gradient-to-br from-blue-100 to-blue-50 rounded-xl w-fit">
-                            <span class="text-blue-600 text-2xl">📖</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Daily Practice</h3>
-                        <p class="text-gray-600">Live speaking sessions every day</p>
-                    </div>
-                    <div
-                        class="feature-card group p-8 rounded-2xl bg-white border-2 border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300">
-                        <div class="icon-wrap mb-4 p-3 bg-gradient-to-br from-blue-100 to-blue-50 rounded-xl w-fit">
-                            <span class="text-blue-600 text-2xl">👥</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Interview Prep</h3>
-                        <p class="text-gray-600">Prepare for job interviews</p>
-                    </div>
-                    <div
-                        class="feature-card group p-8 rounded-2xl bg-white border-2 border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300">
-                        <div class="icon-wrap mb-4 p-3 bg-gradient-to-br from-blue-100 to-blue-50 rounded-xl w-fit">
-                            <span class="text-blue-600 text-2xl">⚡</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Group Discussion</h3>
-                        <p class="text-gray-600">Enhance public speaking skills</p>
-                    </div>
-                    <div
-                        class="feature-card group p-8 rounded-2xl bg-white border-2 border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300">
-                        <div class="icon-wrap mb-4 p-3 bg-gradient-to-br from-blue-100 to-blue-50 rounded-xl w-fit">
-                            <span class="text-blue-600 text-2xl">🏆</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Grammar Mastery</h3>
-                        <p class="text-gray-600">Learn correct usage patterns</p>
-                    </div>
-                    <div
-                        class="feature-card group p-8 rounded-2xl bg-white border-2 border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300">
-                        <div class="icon-wrap mb-4 p-3 bg-gradient-to-br from-blue-100 to-blue-50 rounded-xl w-fit">
-                            <span class="text-blue-600 text-2xl">👨‍🏫</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Expert Teachers</h3>
-                        <p class="text-gray-600">Trained professionals guiding you</p>
-                    </div>
-                    <div
-                        class="feature-card group p-8 rounded-2xl bg-white border-2 border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300">
-                        <div class="icon-wrap mb-4 p-3 bg-gradient-to-br from-blue-100 to-blue-50 rounded-xl w-fit">
-                            <span class="text-blue-600 text-2xl">📜</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Certificate</h3>
-                        <p class="text-gray-600">Earn verified certificate</p>
-                    </div>
-                    <div
-                        class="feature-card group p-8 rounded-2xl bg-white border-2 border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300">
-                        <div class="icon-wrap mb-4 p-3 bg-gradient-to-br from-blue-100 to-blue-50 rounded-xl w-fit">
-                            <span class="text-blue-600 text-2xl">📄</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">PDF Notes</h3>
-                        <p class="text-gray-600">Get comprehensive study material</p>
-                    </div>
-                    <div
-                        class="feature-card group p-8 rounded-2xl bg-white border-2 border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300">
-                        <div class="icon-wrap mb-4 p-3 bg-gradient-to-br from-blue-100 to-blue-50 rounded-xl w-fit">
-                            <span class="text-blue-600 text-2xl">💬</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Doubt Sessions</h3>
-                        <p class="text-gray-600">Get all your queries resolved</p>
-                    </div>
+                <div class="stat-item" style="border-left:1px solid #e5e7eb;">
+                    <div class="stat-icon">📅</div>
+                    <div class="stat-value">1 Month</div>
+                    <div class="stat-label">Course Duration</div>
                 </div>
-
-                <div
-                    class="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-8 text-white text-center mb-8 shadow-2xl">
-                    <p class="text-3xl font-bold mb-6">🚀 Master English Speaking - Join Our New Batch</p>
-                    <a href="https://wa.me/919039662559?text=I%20want%20to%20enroll%20in%20the%20English%20speaking%20course"
-                        class="bg-yellow-400 text-gray-900 font-bold px-8 py-3 rounded-md hover:bg-yellow-500 shadow-lg inline-block">Enroll
-                        Now</a>
+                <div class="stat-item" style="border-left:1px solid #e5e7eb;">
+                    <div class="stat-icon">📚</div>
+                    <div class="stat-value">20+</div>
+                    <div class="stat-label">Practical Topics</div>
                 </div>
-                <div class="text-center">
-                    <p class="text-gray-600 mb-4 font-semibold">Limited seats available. Join before they fill up!</p>
-                    <a href="https://wa.me/919039662559?text=Sign%20me%20up%20for%20the%20English%20speaking%20classes"
-                        class="bg-gradient-to-r from-blue-600 to-blue-800 text-white font-bold px-8 py-4 text-lg rounded-md hover:shadow-xl shadow-lg inline-block">Reserve
-                        Your Seat →</a>
+                <div class="stat-item" style="border-left:1px solid #e5e7eb;">
+                    <div class="stat-icon">🏠</div>
+                    <div class="stat-value">G+1 / G+2</div>
+                    <div class="stat-label">Residential Project</div>
+                </div>
+                <div class="stat-item" style="border-left:1px solid #e5e7eb;">
+                    <div class="stat-icon">🎥</div>
+                    <div class="stat-value">Live Zoom</div>
+                    <div class="stat-label">Interactive Classes</div>
+                </div>
+                <div class="stat-item" style="border-left:1px solid #e5e7eb;">
+                    <div class="stat-icon">👨‍🏫</div>
+                    <div class="stat-value">Industry Experts</div>
+                    <div class="stat-label">Learn from Professionals</div>
                 </div>
             </div>
         </section>
 
-        <!-- KIDS Section -->
-        <section id="kids"
-            class="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 bg-gradient-to-br from-yellow-50 via-white to-yellow-50">
-            <div class="max-w-6xl mx-auto w-full relative z-10">
-                <div class="text-center mb-16">
-                    <h2 class="text-5xl sm:text-6xl font-bold mb-4">
-                        <span class="gradient-text bg-gradient-to-r from-blue-600 to-blue-800">Edumax Kids
-                            Coaching</span><br>
-                        <span class="text-yellow-500">Classes 1-8</span>
-                    </h2>
-                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Complete academic support with personalized attention on each and every student</p>
-                </div>
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-                    <div
-                        class="p-6 rounded-2xl bg-gradient-to-br from-yellow-400 to-yellow-300 text-gray-900 font-bold text-center text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all">
-                        Maths</div>
-                    <div
-                        class="p-6 rounded-2xl bg-gradient-to-br from-yellow-400 to-yellow-300 text-gray-900 font-bold text-center text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all">
-                        English</div>
-                    <div
-                        class="p-6 rounded-2xl bg-gradient-to-br from-yellow-400 to-yellow-300 text-gray-900 font-bold text-center text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all">
-                        Science</div>
-                    <div
-                        class="p-6 rounded-2xl bg-gradient-to-br from-yellow-400 to-yellow-300 text-gray-900 font-bold text-center text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all">
-                        All Subjects</div>
-                </div>
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                    <div
-                        class="p-6 rounded-2xl bg-white border-2 border-yellow-200 shadow-lg hover:shadow-xl hover:border-yellow-400 transition-all text-center">
-                        <div class="text-4xl mb-3">📚</div>
-                        <h3 class="text-xl font-bold text-gray-900">Daily Classes</h3>
-                    </div>
-                    <div
-                        class="p-6 rounded-2xl bg-white border-2 border-yellow-200 shadow-lg hover:shadow-xl hover:border-yellow-400 transition-all text-center">
-                        <div class="text-4xl mb-3">✍️</div>
-                        <h3 class="text-xl font-bold text-gray-900">Daily Homework</h3>
-                    </div>
-                    <div
-                        class="p-6 rounded-2xl bg-white border-2 border-yellow-200 shadow-lg hover:shadow-xl hover:border-yellow-400 transition-all text-center">
-                        <div class="text-4xl mb-3">📝</div>
-                        <h3 class="text-xl font-bold text-gray-900">Weekly Tests</h3>
-                    </div>
-                    <div
-                        class="p-6 rounded-2xl bg-white border-2 border-yellow-200 shadow-lg hover:shadow-xl hover:border-yellow-400 transition-all text-center">
-                        <div class="text-4xl mb-3">📊</div>
-                        <h3 class="text-xl font-bold text-gray-900">Monthly Report</h3>
-                    </div>
-                    <div
-                        class="p-6 rounded-2xl bg-white border-2 border-yellow-200 shadow-lg hover:shadow-xl hover:border-yellow-400 transition-all text-center">
-                        <div class="text-4xl mb-3">👨‍🏫</div>
-                        <h3 class="text-xl font-bold text-gray-900">Personal Attention</h3>
-                    </div>
-                    <div
-                        class="p-6 rounded-2xl bg-white border-2 border-yellow-200 shadow-lg hover:shadow-xl hover:border-yellow-400 transition-all text-center">
-                        <div class="text-4xl mb-3">🗣️</div>
-                        <h3 class="text-xl font-bold text-gray-900">Public Speaking</h3>
-                    </div>
-                    <div
-                        class="p-6 rounded-2xl bg-white border-2 border-yellow-200 shadow-lg hover:shadow-xl hover:border-yellow-400 transition-all text-center">
-                        <div class="text-4xl mb-3">🤝</div>
-                        <h3 class="text-xl font-bold text-gray-900">Academic Support</h3>
-                    </div>
-                    <div
-                        class="p-6 rounded-2xl bg-white border-2 border-yellow-200 shadow-lg hover:shadow-xl hover:border-yellow-400 transition-all text-center">
-                        <div class="text-4xl mb-3">🌟</div>
-                        <h3 class="text-xl font-bold text-gray-900">Expert Teachers</h3>
-                    </div>
-                </div>
-                <div class="bg-white rounded-2xl p-8 border-2 border-yellow-200 shadow-lg text-center mb-8">
-                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Why Parents Trust Us</h3>
-                    <div class="grid sm:grid-cols-3 gap-6">
-                        <div>
-                            <p class="text-4xl font-bold text-blue-600 mb-2">500+</p>
-                            <p class="font-semibold text-gray-700">Students Improved</p>
+        <!-- ====== ABOUT + SCHEDULE ====== -->
+        <section id="about-course" style="padding:60px 16px; background:#fff;">
+            <div style="max-width:1280px; margin:0 auto;">
+                <div class="about-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start;">
+                    <!-- About -->
+                    <div class="fade-in-up">
+                        <div class="section-heading" style="margin-bottom:16px;">
+                            <div class="heading-icon" style="background:#fff7ed; border:2px solid var(--orange);">🏗️</div>
+                            About the Course
                         </div>
-                        <div>
-                            <p class="text-4xl font-bold text-blue-600 mb-2">95%</p>
-                            <p class="font-semibold text-gray-700">Success Rate</p>
+                        <p style="font-size:0.9rem; color:#4b5563; line-height:1.8; margin-bottom:14px;">
+                            <strong>Construction A to Z</strong> is a comprehensive practical online training program for civil engineering students, diploma holders, architects, interior designers, site engineers, contractors, supervisors, builders, developers, and construction professionals.
+                        </p>
+                        <p style="font-size:0.9rem; color:#4b5563; line-height:1.8; margin-bottom:24px;">
+                            The training follows a complete G+1/G+2 residential bungalow project, explaining the different stages of construction from architectural planning to final completion and handover.
+                        </p>
+                        <div style="background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-radius:12px; height:180px; display:flex; align-items:center; justify-content:center; text-align:center; margin-bottom:20px;">
+                            <div>
+                                <div style="font-size:3.5rem;">👷</div>
+                                <p style="font-weight:700; color:#16a34a; margin-top:8px;">Live Construction Site Training</p>
+                            </div>
                         </div>
-                        <div>
-                            <p class="text-4xl font-bold text-blue-600 mb-2">10+</p>
-                            <p class="font-semibold text-gray-700">Years Experience</p>
-                        </div>
+                        <a href="#curriculum" class="btn-orange">Explore Course Details <i class="fas fa-arrow-right"></i></a>
                     </div>
-                </div>
 
+                    <!-- Schedule -->
+                    <div class="fade-in-up">
+                        <div class="schedule-card">
+                            <div class="section-heading" style="color:#fff; font-size:1.2rem; margin-bottom:10px;">
+                                <div class="heading-icon" style="background:rgba(255,255,255,0.15);">🕐</div>
+                                Live Zoom Training Schedule
+                            </div>
+                            <span class="new-batch-badge"><i class="fas fa-circle" style="font-size:0.45rem;"></i> NEW BATCHES EVERY MONTH</span>
 
-                <div
-                    class="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-8 text-white text-center mb-8 shadow-2xl">
-                    <p class="text-3xl font-bold mb-6">🎓 Academic Excellence For Kids - Enroll Today</p>
-                    <a href="https://wa.me/917067097574?text=I%20want%20to%20enroll%20my%20child%20in%20the%20kids%20coaching%20classes"
-                        class="bg-yellow-400 text-gray-900 font-bold px-8 py-3 rounded-md hover:bg-yellow-500 shadow-lg inline-block">Join
-                        Now</a>
-                </div>
-                <div class="text-center">
-                    <p class="text-gray-600 mb-4 font-semibold text-lg">Give your child the competitive edge they
-                        deserve!</p>
-                    <a href="https://wa.me/917067097574?text=I%20want%20to%20enroll%20my%20child%20in%20kids%20coaching"
-                        class="bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 font-bold px-8 py-4 text-lg rounded-md hover:shadow-xl shadow-lg inline-block">Start
-                        Coaching Today: 70670 97574 →</a>
+                            <div class="schedule-row"><div class="schedule-label"><i class="fas fa-calendar-alt" style="width:14px; margin-right:6px;"></i> Course Duration</div><div class="schedule-value">: 1 Month</div></div>
+                            <div class="schedule-row"><div class="schedule-label"><i class="fas fa-book" style="width:14px; margin-right:6px;"></i> Teaching Days</div><div class="schedule-value">: 20</div></div>
+                            <div class="schedule-row"><div class="schedule-label"><i class="fas fa-comments" style="width:14px; margin-right:6px;"></i> Additional Q&amp;A Sessions</div><div class="schedule-value">: 2</div></div>
+                            <div class="schedule-row"><div class="schedule-label"><i class="fas fa-calendar-week" style="width:14px; margin-right:6px;"></i> Class Days</div><div class="schedule-value">: Monday to Friday</div></div>
+                            <div class="schedule-row"><div class="schedule-label"><i class="fas fa-play-circle" style="width:14px; margin-right:6px;"></i> First Session</div><div class="schedule-value">: 7:00 PM – 7:40 PM</div></div>
+                            <div class="schedule-row"><div class="schedule-label"><i class="fas fa-coffee" style="width:14px; margin-right:6px;"></i> Break</div><div class="schedule-value">: 7:40 PM – 7:50 PM</div></div>
+                            <div class="schedule-row"><div class="schedule-label"><i class="fas fa-play-circle" style="width:14px; margin-right:6px;"></i> Second Session</div><div class="schedule-value">: 7:50 PM – 8:30 PM</div></div>
+                            <div class="schedule-row"><div class="schedule-label"><i class="fas fa-laptop" style="width:14px; margin-right:6px;"></i> Training Mode</div><div class="schedule-value">: Live Online Zoom Classes</div></div>
+                            <div class="schedule-row"><div class="schedule-label"><i class="fas fa-globe" style="width:14px; margin-right:6px;"></i> Time Zone</div><div class="schedule-value">: Indian Standard Time (IST)</div></div>
+                            <div class="schedule-row"><div class="schedule-label"><i class="fas fa-home" style="width:14px; margin-right:6px;"></i> Practical Project</div><div class="schedule-value">: Complete G+1/G+2 Bungalow</div></div>
+                            <div style="margin-top:16px;">
+                                <a href="#registration" class="btn-orange" style="justify-content:center; width:100%;">Register Now <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- ASSIGNMENTS Section -->
-        <section id="assignments"
-            class="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 bg-gradient-to-br from-blue-50 via-white to-blue-50">
-            <div class="max-w-6xl mx-auto w-full relative z-10">
-                <div class="text-center mb-16">
-                    <h2 class="text-5xl sm:text-6xl font-bold mb-4">
-                        <span class="gradient-text bg-gradient-to-r from-blue-600 to-blue-800">Edumax Academic
-                            Assignment Help</span>
-                    </h2>
-                    <p class="text-xl text-gray-600 max-w-2xl mx-auto">Quality solutions, on-time delivery, and expert
-                        support for all academic needs</p>
-                </div>
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
-                    <div
-                        class="p-6 rounded-2xl bg-gradient-to-br from-yellow-400 to-yellow-300 text-gray-900 font-bold text-center text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all">
-                        Software</div>
-                    <div
-                        class="p-6 rounded-2xl bg-gradient-to-br from-yellow-400 to-yellow-300 text-gray-900 font-bold text-center text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all">
-                        Engineering</div>
-                    <div
-                        class="p-6 rounded-2xl bg-gradient-to-br from-yellow-400 to-yellow-300 text-gray-900 font-bold text-center text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all">
-                        Management</div>
-                    <div
-                        class="p-6 rounded-2xl bg-gradient-to-br from-yellow-400 to-yellow-300 text-gray-900 font-bold text-center text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all">
-                        All Subjects</div>
-                </div>
-                <div class="grid sm:grid-cols-2 gap-8 mb-16">
-                    <!-- Our Services Card -->
-                    <div class="p-10 rounded-3xl bg-white border-2 border-gray-100 shadow-2xl service-card group relative transition-all duration-300">
-                        <div class="flex items-center gap-4 mb-8">
-                            <div class="p-4 bg-blue-50 text-blue-600 rounded-2xl group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 text-3xl shadow-inner">📋</div>
-                            <h3 class="text-3xl font-bold text-gray-800">Our Services</h3>
+        <!-- ====== CURRICULUM ====== -->
+        <section id="curriculum" style="padding:60px 16px;">
+            <div style="max-width:1280px; margin:0 auto;">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:24px; flex-wrap:wrap; gap:16px;" class="fade-in-up">
+                    <div>
+                        <div class="section-heading" style="color:#fff; margin-bottom:6px;">
+                            <div class="heading-icon" style="background:rgba(255,255,255,0.15);">📋</div>
+                            Course Curriculum
                         </div>
-                        <ul class="space-y-5 mb-10">
-                            <li class="flex items-center gap-4 group/item">
-                                <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-yellow-100 text-yellow-600 rounded-full group-hover/item:bg-yellow-400 group-hover/item:text-white transition-colors">✓</span>
-                                <span class="text-gray-700 font-semibold text-lg">Academic Assignments</span>
-                            </li>
-                            <li class="flex items-center gap-4 group/item">
-                                <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-yellow-100 text-yellow-600 rounded-full group-hover/item:bg-yellow-400 group-hover/item:text-white transition-colors">✓</span>
-                                <span class="text-gray-700 font-semibold text-lg">Lab Reports & Analysis</span>
-                            </li>
-                            <li class="flex items-center gap-4 group/item">
-                                <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-yellow-100 text-yellow-600 rounded-full group-hover/item:bg-yellow-400 group-hover/item:text-white transition-colors">✓</span>
-                                <span class="text-gray-700 font-semibold text-lg">Online Exam Support</span>
-                            </li>
-                            <li class="flex items-center gap-4 group/item">
-                                <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-yellow-100 text-yellow-600 rounded-full group-hover/item:bg-yellow-400 group-hover/item:text-white transition-colors">✓</span>
-                                <span class="text-gray-700 font-semibold text-lg">Thesis & Case Studies</span>
-                            </li>
-                            <li class="flex items-center gap-4 group/item">
-                                <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-yellow-100 text-yellow-600 rounded-full group-hover/item:bg-yellow-400 group-hover/item:text-white transition-colors">✓</span>
-                                <span class="text-gray-700 font-semibold text-lg">Homework Assistance</span>
-                            </li>
+                        <p style="color:rgba(255,255,255,0.75); font-size:0.85rem;">Complete Construction Training — From Planning to Handover</p>
+                        <p style="color:rgba(255,255,255,0.5); font-size:0.75rem; margin-top:4px; font-style:italic;">AutoCAD, Revit and other industry software may be referred to during technical explanations. Dedicated software training is not included.</p>
+                    </div>
+                    <a href="#registration" class="view-curriculum-btn">View Full Curriculum →</a>
+                </div>
+
+                <div class="curriculum-grid fade-in-up">
+                    <div class="module-card"><div class="module-num">01</div><div class="module-title">Architectural Planning and Building Drawings</div></div>
+                    <div class="module-card"><div class="module-num">02</div><div class="module-title">Structural Design and RCC Concepts</div></div>
+                    <div class="module-card"><div class="module-num">03</div><div class="module-title">Foundations, Footings, Columns, Beams and Slabs</div></div>
+                    <div class="module-card"><div class="module-num">04</div><div class="module-title">Site Execution Techniques and Construction Procedures</div></div>
+                    <div class="module-card"><div class="module-num">05</div><div class="module-title">Construction Materials and Their Applications</div></div>
+                    <div class="module-card"><div class="module-num">06</div><div class="module-title">Brickwork, Blockwork, Plastering and Waterproofing</div></div>
+                    <div class="module-card"><div class="module-num">07</div><div class="module-title">Electrical Planning, Layouts and Installation</div></div>
+                    <div class="module-card"><div class="module-num">08</div><div class="module-title">Plumbing, Sanitary and Drainage Systems</div></div>
+                    <div class="module-card"><div class="module-num">09</div><div class="module-title">HVAC and MEP Services Coordination</div></div>
+                    <div class="module-card"><div class="module-num">10</div><div class="module-title">Quantity Estimation, Quantity Surveying and BOQ</div></div>
+                    <div class="module-card"><div class="module-num">11</div><div class="module-title">Project Costing, Budgeting and Rate Analysis</div></div>
+                    <div class="module-card"><div class="module-num">12</div><div class="module-title">Tendering, Contracts and Billing</div></div>
+                    <div class="module-card"><div class="module-num">13</div><div class="module-title">Construction Planning, Scheduling and Project Management</div></div>
+                    <div class="module-card"><div class="module-num">14</div><div class="module-title">Quality Control, Site Safety and Inspection</div></div>
+                    <div class="module-card"><div class="module-num">15</div><div class="module-title">Interior Design, Finishes and Decoration</div></div>
+                    <div class="module-card"><div class="module-num">16</div><div class="module-title">Carpentry, Furniture Design and Furniture Installation</div></div>
+                    <div class="module-card"><div class="module-num">17</div><div class="module-title">Flooring, Tiles, Doors, Windows and Painting</div></div>
+                    <div class="module-card"><div class="module-num">18</div><div class="module-title">BIM – Building Information Modeling <em style="font-size:0.7rem; opacity:0.7;">(Subject to Trainer Availability)</em></div></div>
+                    <div class="module-card"><div class="module-num">19</div><div class="module-title">Coordination of Architectural, Structural and MEP Drawings</div></div>
+                    <div class="module-card"><div class="module-num">20</div><div class="module-title">Project Completion, Testing and Final Handover</div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== FEES + LEARN + WHO + TRAINERS ====== -->
+        <section id="fees-info" style="padding:60px 16px;">
+            <div style="max-width:1280px; margin:0 auto;">
+                <div class="fees-grid" style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px;">
+
+                    <!-- Fees -->
+                    <div class="fee-card fade-in-up">
+                        <div class="section-heading" style="font-size:1rem; margin-bottom:4px;">
+                            <div class="heading-icon" style="background:#fff7ed; border:1px solid var(--orange); width:32px; height:32px; font-size:0.9rem;">₹</div>
+                            Course Fees &amp; Registration
+                        </div>
+                        <div class="fee-amount-box">
+                            <div class="limited-badge">Limited Seats</div>
+                            <div style="color:#6b7280; font-size:0.78rem;">Course Fee</div>
+                            <div class="special-price" style="font-size:2.2rem;">₹3,900</div>
+                            <div style="font-size:0.7rem; color:#6b7280; margin-top:4px;">One-time payment · All inclusive</div>
+                        </div>
+                        <a href="#registration" class="btn-orange" style="justify-content:center; width:100%; margin-bottom:16px; font-size:0.85rem;">
+                            REGISTER NOW <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <div style="font-weight:700; font-size:0.82rem; color:#374151; margin-bottom:10px;">Payment Options (Click to Pay)</div>
+                        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:12px;">
+                            <button type="button" id="tab-btn-razorpay" onclick="openConstructionRazorpay()" style="background:#1e40af; color:#fff; border-radius:8px; padding:10px 14px; font-size:0.8rem; font-weight:700; border:none; cursor:pointer; display:flex; align-items:center; gap:6px; box-shadow:0 2px 8px rgba(30,64,175,0.3); transition:all 0.2s;" onmouseover="this.style.background='#1d4ed8'" onmouseout="this.style.background='#1e40af'">
+                                <i class="fas fa-credit-card"></i> Pay via Razorpay
+                            </button>
+                            <button type="button" id="tab-btn-upi" onclick="togglePaymentTab('upi')" style="background:#f3f4f6; border:1px solid #d1d5db; border-radius:8px; padding:10px 14px; font-size:0.8rem; font-weight:700; color:#374151; cursor:pointer; display:flex; align-items:center; gap:6px; transition:all 0.2s;" onmouseover="this.style.background='#e5e7eb'" onmouseout="this.style.background='#f3f4f6'">
+                                <i class="fas fa-qrcode"></i> UPI QR Code
+                            </button>
+                        </div>
+
+                        <!-- Razorpay Online Pay Box -->
+                        <div id="panel-razorpay" style="background:#eff6ff; border:2px solid #3b82f6; border-radius:12px; padding:14px; text-align:center; margin-bottom:12px;">
+                            <div style="font-size:0.75rem; font-weight:700; color:#1e40af; margin-bottom:4px; display:flex; align-items:center; justify-content:center; gap:6px;">
+                                <i class="fas fa-shield-alt"></i> Razorpay 100% Secure Checkout
+                            </div>
+                            <div style="font-size:0.7rem; color:#4b5563; margin-bottom:10px;">
+                                Supports UPI (GPay/PhonePe), Debit &amp; Credit Cards, NetBanking, Wallets
+                            </div>
+                            <button type="button" onclick="openConstructionRazorpay()" style="background:linear-gradient(135deg,#2563eb,#1d4ed8); color:#fff; border:none; border-radius:8px; padding:12px 18px; width:100%; font-weight:800; font-size:0.88rem; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; box-shadow:0 4px 12px rgba(37,99,235,0.35); transition:transform 0.15s;" onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='translateY(0)'">
+                                <span>💳 PAY ₹3,900 VIA RAZORPAY</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+
+                        <!-- QR Code for UPI Payment -->
+                        <div id="panel-upi" style="background:#f9fafb; border:2px dashed #d1d5db; border-radius:12px; padding:12px; text-align:center;">
+                            <div style="font-size:0.72rem; font-weight:700; color:#374151; margin-bottom:8px;">📱 Scan QR to Pay via UPI</div>
+                            <img
+                                src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=upi://pay?pa=vjain206542@okicici%26pn=EduMax+Institute%26am=3900%26cu=INR%26tn=Construction+A+to+Z+Course+Fee"
+                                alt="UPI QR Code - Scan to Pay ₹3900"
+                                style="width:120px; height:120px; border-radius:8px; border:1px solid #e5e7eb; display:block; margin:0 auto;"
+                            />
+                            <div style="font-size:0.68rem; color:#6b7280; margin-top:6px;">UPI ID: <strong>vjain206542@okicici</strong></div>
+                            <div style="font-size:0.72rem; font-weight:700; color:var(--orange); margin-top:2px;">Amount: ₹3,900</div>
+                        </div>
+                    </div>
+
+                    <!-- Learn -->
+                    <div class="fee-card fade-in-up">
+                        <div class="section-heading" style="font-size:1rem; margin-bottom:16px;">
+                            <div class="heading-icon" style="background:#dbeafe; border:1px solid #1d4ed8; width:32px; height:32px; font-size:0.9rem;">🎓</div>
+                            What Students Will Learn
+                        </div>
+                        <ul class="check-list">
+                            <li><div class="check-icon" style="background:#dcfce7; color:#16a34a;">✓</div>Complete residential project lifecycle</li>
+                            <li><div class="check-icon" style="background:#dcfce7; color:#16a34a;">✓</div>Understanding all technical drawings</li>
+                            <li><div class="check-icon" style="background:#dcfce7; color:#16a34a;">✓</div>Construction materials and execution</li>
+                            <li><div class="check-icon" style="background:#dcfce7; color:#16a34a;">✓</div>Estimation, costing and contracts</li>
+                            <li><div class="check-icon" style="background:#dcfce7; color:#16a34a;">✓</div>Site coordination and quality control</li>
+                            <li><div class="check-icon" style="background:#dcfce7; color:#16a34a;">✓</div>Practical industry knowledge</li>
                         </ul>
-                        <a href="https://wa.me/917067097574?text=Hi!%20I%20need%20help%20with%20my%20assignments." class="yellow-border-btn w-full">Hire An Expert Now →</a>
                     </div>
 
-                    <!-- Why Choose Us Card -->
-                    <div class="p-10 rounded-3xl bg-blue-600 text-white shadow-2xl service-card relative overflow-hidden group">
-                        <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-white/5 rounded-full group-hover:scale-125 transition-all duration-700"></div>
-                        <div class="absolute -left-10 -top-10 w-40 h-40 bg-yellow-400/10 rounded-full blur-2xl"></div>
-                        
-                        <div class="flex items-center gap-4 mb-8 relative z-10">
-                            <div class="p-4 bg-white/10 backdrop-blur-md rounded-2xl text-3xl border border-white/20">✨</div>
-                            <h3 class="text-3xl font-bold">Why Choose Us?</h3>
+                    <!-- Who Can Join -->
+                    <div class="fee-card fade-in-up">
+                        <div class="section-heading" style="font-size:1rem; margin-bottom:16px;">
+                            <div class="heading-icon" style="background:#fce7f3; border:1px solid #db2777; width:32px; height:32px; font-size:0.9rem;">👥</div>
+                            Who Can Join?
                         </div>
-                        <ul class="space-y-6 relative z-10 mb-10">
-                            <li class="flex items-center gap-5">
-                                <span class="text-yellow-400 text-2xl drop-shadow-lg">★</span>
-                                <span class="font-bold text-xl tracking-wide">100% On-Time Delivery</span>
-                            </li>
-                            <li class="flex items-center gap-5">
-                                <span class="text-yellow-400 text-2xl drop-shadow-lg">★</span>
-                                <span class="font-bold text-xl tracking-wide">Plagiarism Free Work</span>
-                            </li>
-                            <li class="flex items-center gap-5">
-                                <span class="text-yellow-400 text-2xl drop-shadow-lg">★</span>
-                                <span class="font-bold text-xl tracking-wide">Highly Affordable Fees</span>
-                            </li>
-                            <li class="flex items-center gap-5">
-                                <span class="text-yellow-400 text-2xl drop-shadow-lg">★</span>
-                                <span class="font-bold text-xl tracking-wide">Top Academic Grades</span>
-                            </li>
-                            <li class="flex items-center gap-5">
-                                <span class="text-yellow-400 text-2xl drop-shadow-lg">★</span>
-                                <span class="font-bold text-xl tracking-wide">Round-the-Clock Support</span>
-                            </li>
+                        <ul class="check-list">
+                            <li><div class="check-icon" style="background:#dbeafe; color:#1d4ed8;">✓</div>Civil Engineering Students</li>
+                            <li><div class="check-icon" style="background:#dbeafe; color:#1d4ed8;">✓</div>Diploma Holders</li>
+                            <li><div class="check-icon" style="background:#dbeafe; color:#1d4ed8;">✓</div>Civil Engineers and Site Engineers</li>
+                            <li><div class="check-icon" style="background:#dbeafe; color:#1d4ed8;">✓</div>Architects and Architectural Professionals</li>
+                            <li><div class="check-icon" style="background:#dbeafe; color:#1d4ed8;">✓</div>Interior Designers</li>
+                            <li><div class="check-icon" style="background:#dbeafe; color:#1d4ed8;">✓</div>Contractors, Supervisors, Builders</li>
+                            <li><div class="check-icon" style="background:#dbeafe; color:#1d4ed8;">✓</div>Construction Industry Professionals</li>
+                            <li><div class="check-icon" style="background:#dbeafe; color:#1d4ed8;">✓</div>Anyone interested in practical knowledge</li>
                         </ul>
-                        <div class="relative z-10">
-                            <a href="https://wa.me/917067097574?text=Tell%20me%20more%20about%20your%20assignment%20services." class="inline-block w-full py-4 bg-white text-blue-600 font-extrabold rounded-full hover:bg-yellow-400 hover:text-gray-900 transition-all shadow-2xl text-center text-lg">Inquire Today</a>
+                    </div>
+
+                    <!-- Trainers -->
+                    <div class="fee-card fade-in-up" id="trainers">
+                        <div class="section-heading" style="font-size:1rem; margin-bottom:6px;">
+                            <div class="heading-icon" style="background:#f0fdf4; border:1px solid #16a34a; width:32px; height:32px; font-size:0.9rem;">👨‍🏫</div>
+                            Our Trainers
                         </div>
+                        <p style="font-size:0.72rem; color:#6b7280; margin-bottom:16px;">Learn from Experienced Industry Professionals</p>
+
+                        <div style="display:flex; flex-direction:column; gap:14px;">
+                            <!-- Trainer 1: Mr. Balaji -->
+                            <div style="display:flex; align-items:center; gap:12px; background:#fff7ed; border-radius:10px; padding:10px;">
+                                <div style="width:56px; height:56px; border-radius:50%; background:linear-gradient(135deg,#fed7aa,#fb923c); border:2px solid var(--orange); display:flex; align-items:center; justify-content:center; font-size:1.6rem; flex-shrink:0; box-shadow:0 4px 12px rgba(249,115,22,0.25);">👷</div>
+                                <div>
+                                    <div style="font-weight:800; font-size:0.88rem; color:#1f2937;">Mr. Balaji</div>
+                                    <div style="font-size:0.72rem; color:#6b7280; font-weight:500;">Civil Engineer</div>
+                                    <div style="font-size:0.7rem; color:var(--orange); font-weight:700; margin-top:2px;">⭐ 20+ Years Experience</div>
+                                </div>
+                            </div>
+                            <!-- Trainer 2: Mr. Sadik -->
+                            <div style="display:flex; align-items:center; gap:12px; background:#f0fdf4; border-radius:10px; padding:10px;">
+                                <div style="width:56px; height:56px; border-radius:50%; background:linear-gradient(135deg,#bbf7d0,#4ade80); border:2px solid #16a34a; display:flex; align-items:center; justify-content:center; font-size:1.6rem; flex-shrink:0; box-shadow:0 4px 12px rgba(22,163,74,0.2);">👨‍💼</div>
+                                <div>
+                                    <div style="font-weight:800; font-size:0.88rem; color:#1f2937;">Mr. Sadik</div>
+                                    <div style="font-size:0.72rem; color:#6b7280; font-weight:500;">Construction Expert</div>
+                                    <div style="font-size:0.7rem; color:#16a34a; font-weight:700; margin-top:2px;">⭐ 10+ Years Experience</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#registration" style="text-decoration:none; margin-top:14px; display:block; text-align:center; color:var(--orange); font-weight:600; font-size:0.8rem; border-top:1px solid #e5e7eb; padding-top:12px;">View All Trainers →</a>
                     </div>
                 </div>
-                <div class="text-center">
-                    <p class="text-gray-500 font-medium mb-4 italic">Trusted by 2000+ students worldwide for academic success</p>
+            </div>
+        </section>
+
+        <!-- ====== RECORDED ====== -->
+        <section id="recorded" style="padding:48px 16px;">
+            <div style="max-width:1280px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:24px;" class="fade-in-up">
+                <div style="display:flex; align-items:center; gap:16px;">
+                    <div style="width:52px; height:52px; background:rgba(255,255,255,0.15); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.5rem; border:2px solid rgba(255,255,255,0.3);">▶️</div>
+                    <div>
+                        <h2 style="font-family:'Outfit',sans-serif; font-weight:800; font-size:1.4rem; color:#fff; margin:0;">Recorded Construction Courses</h2>
+                        <p style="color:rgba(255,255,255,0.75); font-size:0.875rem; margin:4px 0 0;">Practical Construction Training — Learn Anytime, Anywhere.</p>
+                    </div>
+                </div>
+                <div style="text-align:center;">
+                    <div style="background:#fbbf24; color:#1f2937; font-weight:800; font-size:1rem; padding:10px 28px; border-radius:8px; letter-spacing:0.05em;">COMING SOON</div>
+                    <p style="color:rgba(255,255,255,0.65); font-size:0.72rem; margin-top:8px;">Stay tuned for self-paced learning modules</p>
                 </div>
             </div>
         </section>
 
-        <!-- CONTACT Section -->
-        <section id="contact"
-            class="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 bg-gradient-to-br from-white via-gray-50 to-white">
-            <div class="max-w-3xl mx-auto w-full text-center relative z-10">
-                <h2 class="text-5xl sm:text-6xl font-bold mb-6">
-                    <span class="gradient-text bg-gradient-to-r from-blue-600 to-blue-800">Ready to Transform?</span>
-                </h2>
-                <p class="text-xl text-gray-600 mb-12">Join hundreds of students who have achieved their learning goals
-                    with Edumax</p>
-                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                    <!-- English Contact -->
-                    <div class="bg-white p-4 rounded-3xl border-2 border-gray-100 shadow-xl hover:shadow-2xl transition-all group">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center text-xl shadow-lg group-hover:scale-110 transition-transform">💬</div>
-                            <div class="text-left">
-                                <p class="text-[10px] font-bold text-blue-600 uppercase tracking-wider">English Speaking</p>
-                                <h3 class="text-md font-extrabold text-gray-900">Call/WhatsApp</h3>
-                            </div>
+        <!-- ====== FAQ + REGISTRATION + CONTACT ====== -->
+        <section style="padding:60px 16px; background:#f9fafb;" id="registration">
+            <div style="max-width:1280px; margin:0 auto;">
+                <div class="faq-reg-grid" style="display:grid; grid-template-columns:1fr 1.6fr 1fr; gap:28px; align-items:start;">
+
+                    <!-- FAQ -->
+                    <div id="faq" class="fade-in-up">
+                        <div class="section-heading" style="font-size:1.1rem; margin-bottom:16px;">
+                            <div class="heading-icon" style="background:#fff7ed; border:1px solid var(--orange);">❓</div>
+                            Frequently Asked Questions
                         </div>
-                        <a href="https://wa.me/919039662559" class="block w-full py-3 bg-blue-50 text-blue-600 text-lg font-black rounded-xl hover:bg-blue-600 hover:text-white transition-all text-center whitespace-nowrap">
-                            +91 90396 62559
-                        </a>
+
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFaq(this)">Is the course online?<i class="fas fa-chevron-down faq-icon"></i></button>
+                            <div class="faq-answer">Yes, this is a 100% online live course conducted via Zoom. You can join from anywhere in India or abroad.</div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFaq(this)">When does the next batch start?<i class="fas fa-chevron-down faq-icon"></i></button>
+                            <div class="faq-answer">New batches start every month. Register now to secure your seat. Limited seats available.</div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFaq(this)">Can working professionals attend?<i class="fas fa-chevron-down faq-icon"></i></button>
+                            <div class="faq-answer">Absolutely! Classes are held in the evening (7:00 PM – 8:30 PM IST) on weekdays, making it convenient for working professionals.</div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFaq(this)">Will practical projects be covered?<i class="fas fa-chevron-down faq-icon"></i></button>
+                            <div class="faq-answer">Yes! The entire course is based on a real G+1/G+2 residential bungalow project, covering everything from planning to handover.</div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFaq(this)">How can I register?<i class="fas fa-chevron-down faq-icon"></i></button>
+                            <div class="faq-answer">Fill the Student Registration Form on this page, or contact us via WhatsApp at +91 7415 026 024. Payment via Razorpay or UPI.</div>
+                        </div>
                     </div>
 
-                    <!-- Kids Contact -->
-                    <div class="bg-white p-4 rounded-3xl border-2 border-gray-100 shadow-xl hover:shadow-2xl transition-all group">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="w-12 h-12 bg-yellow-400 text-gray-900 rounded-xl flex items-center justify-center text-xl shadow-lg group-hover:scale-110 transition-transform">🎒</div>
-                            <div class="text-left">
-                                <p class="text-[10px] font-bold text-yellow-600 uppercase tracking-wider">Kids Coaching</p>
-                                <h3 class="text-md font-extrabold text-gray-900">Classes 1-8</h3>
+                    <!-- Registration Form -->
+                    <div class="fade-in-up">
+                        <div style="background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,0.08);">
+                            <div style="background:linear-gradient(135deg,#1e3a8a,#1d4ed8); padding:20px 24px;">
+                                <div class="section-heading" style="color:#fff; font-size:1.1rem; margin-bottom:4px;">
+                                    <div class="heading-icon" style="background:rgba(255,255,255,0.15);">📝</div>
+                                    Student Registration Form
+                                </div>
+                                <p style="color:rgba(255,255,255,0.8); font-size:0.78rem; margin:0;">REGISTER FOR CONSTRUCTION A TO Z</p>
                             </div>
+                            <form id="construction-reg-form" style="padding:20px;" onsubmit="submitConstructionForm(event)">
+                                <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px;">
+                                    <div>
+                                        <label class="form-label">Full Name <span class="req">*</span></label>
+                                        <input type="text" class="form-input" id="reg-name" placeholder="Enter your full name" required>
+                                    </div>
+                                    <div>
+                                        <label class="form-label">Mobile / WhatsApp Number <span class="req">*</span></label>
+                                        <input type="tel" class="form-input" id="reg-phone" placeholder="Enter mobile number" required>
+                                    </div>
+                                    <div>
+                                        <label class="form-label">Email Address <span class="req">*</span></label>
+                                        <input type="email" class="form-input" id="reg-email" placeholder="Enter email address" required>
+                                    </div>
+                                    <div>
+                                        <label class="form-label">City and State <span class="req">*</span></label>
+                                        <input type="text" class="form-input" id="reg-city" placeholder="Enter your city and state" required>
+                                    </div>
+                                    <div>
+                                        <label class="form-label">Qualification / Profession <span class="req">*</span></label>
+                                        <select class="form-input" id="reg-qualification" required>
+                                            <option value="" disabled selected>Select</option>
+                                            <option>Civil Engineering Student</option>
+                                            <option>Diploma Holder</option>
+                                            <option>Civil Engineer</option>
+                                            <option>Architect</option>
+                                            <option>Interior Designer</option>
+                                            <option>Site Engineer</option>
+                                            <option>Contractor / Builder</option>
+                                            <option>Construction Professional</option>
+                                            <option>Other</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="form-label">Preferred Batch Month <span class="req">*</span></label>
+                                        <select class="form-input" id="reg-batch" required>
+                                            <option value="" disabled selected>Select Month</option>
+                                            <option>November 2026</option>
+                                            <option>December 2026</option>
+                                            <option>January 2027</option>
+                                            <option>February 2027</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="form-label">Payment Method <span class="req">*</span></label>
+                                        <select class="form-input" id="reg-payment" required>
+                                            <option value="" disabled selected>Select Payment Method</option>
+                                            <option value="Online (Razorpay / UPI)">Online (Razorpay / UPI)</option>
+                                            <option value="Bank Transfer">Bank Transfer</option>
+                                        </select>
+                                        <div style="margin-top:6px;">
+                                            <button type="button" onclick="openConstructionRazorpay()" style="background:#2563eb; color:#fff; font-size:0.75rem; font-weight:700; padding:6px 12px; border-radius:6px; border:none; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">
+                                                <i class="fas fa-credit-card"></i> Pay ₹3,900 via Razorpay Now
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label class="form-label">Payment Reference ID / Razorpay ID <span class="req">*</span></label>
+                                        <input type="text" class="form-input" id="reg-txn" placeholder="Enter Transaction ID or Razorpay Payment ID" required>
+                                    </div>
+                                </div>
+                                <button type="submit" class="submit-btn">SUBMIT REGISTRATION</button>
+                            </form>
                         </div>
-                        <a href="https://wa.me/917067097574" class="block w-full py-3 bg-yellow-50 text-yellow-600 text-lg font-black rounded-xl hover:bg-yellow-400 hover:text-gray-900 transition-all text-center whitespace-nowrap">
-                            +91 70670 97574
-                        </a>
                     </div>
 
-                    <!-- Assignments Contact -->
-                    <div class="bg-white p-4 rounded-3xl border-2 border-gray-100 shadow-xl hover:shadow-2xl transition-all group">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="w-12 h-12 bg-purple-600 text-white rounded-xl flex items-center justify-center text-xl shadow-lg group-hover:scale-110 transition-transform">📝</div>
-                            <div class="text-left">
-                                <p class="text-[10px] font-bold text-purple-600 uppercase tracking-wider">Assignments</p>
-                                <h3 class="text-md font-extrabold text-gray-900">Academic Help</h3>
+                    <!-- Contact -->
+                    <div id="const-contact" class="fade-in-up">
+                        <div class="section-heading" style="font-size:1.1rem; margin-bottom:16px;">
+                            <div class="heading-icon" style="background:#dcfce7; border:1px solid #16a34a;"><i class="fab fa-whatsapp" style="color:#16a34a;"></i></div>
+                            Contact and Enquiries
+                        </div>
+                        <div class="contact-box">
+                            <div style="font-weight:800; font-size:1rem;">CONSTRUCTION A TO Z</div>
+                            <div style="font-weight:600; font-size:0.85rem; opacity:0.9; margin-top:2px;">EDUMAX.WORLD</div>
+                            <div style="margin-top:12px; font-size:0.78rem; opacity:0.85;">For Course Registration and Enquiries:</div>
+                            <a href="tel:+917415026024" class="contact-phone">📞 7415 026 024</a>
+                            <div style="display:flex; flex-direction:column; gap:10px; margin-top:12px;">
+                                <a href="tel:+917415026024" style="text-decoration:none; background:#fff; color:#22c55e; font-weight:700; padding:12px; border-radius:8px; text-align:center; font-size:0.875rem; display:flex; align-items:center; justify-content:center; gap:8px;">
+                                    <i class="fas fa-phone"></i> CALL NOW
+                                </a>
+                                <a href="https://wa.me/917415026024?text=Hi!%20I%20want%20to%20enroll%20in%20Construction%20A%20to%20Z%20course" target="_blank" style="text-decoration:none; background:#128c7e; color:#fff; font-weight:700; padding:12px; border-radius:8px; text-align:center; font-size:0.875rem; display:flex; align-items:center; justify-content:center; gap:8px;">
+                                    <i class="fab fa-whatsapp" style="font-size:1rem;"></i> WHATSAPP US
+                                </a>
                             </div>
                         </div>
-                        <a href="https://wa.me/917067097574?text=Hi!%20I%20need%20help%20with%20my%20assignments." class="block w-full py-3 bg-purple-50 text-purple-600 text-lg font-black rounded-xl hover:bg-purple-600 hover:text-white transition-all text-center whitespace-nowrap">
-                            +91 70670 97574
-                        </a>
-                    </div>
-
-                    <!-- Digital Marketing Contact -->
-                    <div class="bg-white p-4 rounded-3xl border-2 border-gray-100 shadow-xl hover:shadow-2xl transition-all group" style="border-color: rgba(168,85,247,0.3);">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="w-12 h-12 text-white rounded-xl flex items-center justify-center text-xl shadow-lg group-hover:scale-110 transition-transform" style="background: linear-gradient(135deg, #a855f7, #3b82f6);">📊</div>
-                            <div class="text-left">
-                                <p class="text-[10px] font-bold uppercase tracking-wider" style="color: #a855f7;">Digital Marketing</p>
-                                <h3 class="text-md font-extrabold text-gray-900">₹3,000/Month</h3>
-                            </div>
+                        <div style="background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:16px; margin-top:14px; text-align:center;">
+                            <p style="font-size:0.8rem; color:#6b7280;">We are here to help you. Feel free to contact us for any queries. 😊</p>
                         </div>
-                        <a href="https://wa.me/919039662559?text=Hi!%20I%20want%20to%20enroll%20in%20the%20Digital%20Marketing%20course" class="block w-full py-3 text-white text-lg font-black rounded-xl hover:opacity-90 transition-all text-center whitespace-nowrap" style="background: linear-gradient(90deg, #a855f7, #3b82f6);">
-                            +91 90396 62559
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Consolidated Support Info Card -->
-                <div class="bg-gray-50 rounded-[2rem] p-6 sm:p-8 border-2 border-gray-100 shadow-md">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div class="flex items-start gap-4">
-                            <span class="text-2xl mt-1">✉️</span>
-                            <div class="text-left">
-                                <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Email Address</p>
-                                <a href="mailto:vjain206542@gmail.com" class="text-sm font-bold text-gray-800 hover:text-blue-600 transition-colors whitespace-nowrap">vjain206542@gmail.com</a>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4">
-                            <span class="text-2xl mt-1">📍</span>
-                            <div class="text-left">
-                                <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Presence</p>
-                                <p class="text-sm font-bold text-gray-800">Online (Available Globally)</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4">
-                            <span class="text-2xl mt-1">⏰</span>
-                            <div class="text-left">
-                                <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Response Time</p>
-                                <p class="text-sm font-bold text-gray-800">Available 9 AM - 10 PM</p>
-                            </div>
+                        <div style="margin-top:12px; background:#fff7ed; border:1px solid #fed7aa; border-radius:12px; padding:14px;">
+                            <p style="font-size:0.75rem; font-weight:700; color:#374151; margin-bottom:6px;">⏰ Support Hours</p>
+                            <p style="font-size:0.8rem; color:#6b7280; margin:0;">Mon – Sat: 9 AM – 8 PM IST</p>
+                            <p style="font-size:0.8rem; color:#6b7280; margin:4px 0 0;">✉️ <a href="mailto:vjain206542@gmail.com" style="color:var(--orange);">vjain206542@gmail.com</a></p>
                         </div>
                     </div>
-                </div>
-                <div class="mt-8">
-                    <a href="https://wa.me/919039662559?text=Hi!%20I%20want%20to%20join%20Edumax%20Institute.%20Tell%20me%20more%20about%20your%20courses."
-                        class="px-8 py-4 text-lg font-bold bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 rounded-md hover:shadow-xl shadow-lg transition-all hover:scale-105 inline-block">Start
-                        Your Journey Today →</a>
                 </div>
             </div>
         </section>
+
+        <!-- ====== OTHER COURSES ====== -->
+        <section style="padding:20px 0; background:#1f2937;">
+            <div style="max-width:1280px; margin:0 auto; padding:0 16px;">
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
+                    <div>
+                        <span style="font-size:0.75rem; font-weight:700; color:#9ca3af; letter-spacing:0.08em; text-transform:uppercase;">⬤ Our Other Courses</span>
+                        <span style="font-size:0.75rem; color:#6b7280; margin-left:10px;">Explore our existing English, software and other professional courses.</span>
+                    </div>
+                    <a href="courses.html" style="font-size:0.8rem; font-weight:600; color:var(--orange); text-decoration:none;">View All Courses →</a>
+                </div>
+                <div style="display:flex; gap:14px; overflow-x:auto; padding-bottom:8px; scrollbar-width:thin; scrollbar-color:#f97316 #374151;">
+                    <a href="courses.html#english" style="text-decoration:none; flex-shrink:0;">
+                        <div style="background:linear-gradient(135deg,#1e40af,#2563eb); border-radius:10px; padding:18px 16px; min-width:170px; transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                            <div style="font-size:1.4rem; margin-bottom:6px;">🗣️</div>
+                            <div style="color:#fff; font-weight:700; font-size:0.875rem;">Spoken English</div>
+                            <div style="color:rgba(255,255,255,0.7); font-size:0.72rem; margin-top:3px;">Improve Your Communication</div>
+                        </div>
+                    </a>
+                    <a href="courses.html#digital-marketing" style="text-decoration:none; flex-shrink:0;">
+                        <div style="background:linear-gradient(135deg,#7c3aed,#4f46e5); border-radius:10px; padding:18px 16px; min-width:170px; transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                            <div style="font-size:1.4rem; margin-bottom:6px;">💻</div>
+                            <div style="color:#fff; font-weight:700; font-size:0.875rem;">Web Development</div>
+                            <div style="color:rgba(255,255,255,0.7); font-size:0.72rem; margin-top:3px;">HTML, CSS, JavaScript</div>
+                        </div>
+                    </a>
+                    <a href="courses.html" style="text-decoration:none; flex-shrink:0;">
+                        <div style="background:linear-gradient(135deg,#f59e0b,#d97706); border-radius:10px; padding:18px 16px; min-width:170px; transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                            <div style="font-size:1.4rem; margin-bottom:6px;">🐍</div>
+                            <div style="color:#fff; font-weight:700; font-size:0.875rem;">Python Programming</div>
+                            <div style="color:rgba(255,255,255,0.7); font-size:0.72rem; margin-top:3px;">From Basics to Advanced</div>
+                        </div>
+                    </a>
+                    <a href="courses.html" style="text-decoration:none; flex-shrink:0;">
+                        <div style="background:linear-gradient(135deg,#0ea5e9,#0284c7); border-radius:10px; padding:18px 16px; min-width:170px; transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                            <div style="font-size:1.4rem; margin-bottom:6px;">📊</div>
+                            <div style="color:#fff; font-weight:700; font-size:0.875rem;">Data Science &amp; AI</div>
+                            <div style="color:rgba(255,255,255,0.7); font-size:0.72rem; margin-top:3px;">Practical Projects</div>
+                        </div>
+                    </a>
+                    <a href="courses.html" style="text-decoration:none; flex-shrink:0;">
+                        <div style="background:linear-gradient(135deg,#16a34a,#15803d); border-radius:10px; padding:18px 16px; min-width:170px; transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                            <div style="font-size:1.4rem; margin-bottom:6px;">🖥️</div>
+                            <div style="color:#fff; font-weight:700; font-size:0.875rem;">Computer Basics</div>
+                            <div style="color:rgba(255,255,255,0.7); font-size:0.72rem; margin-top:3px;">For Beginners</div>
+                        </div>
+                    </a>
+                    <a href="courses.html#kids" style="text-decoration:none; flex-shrink:0;">
+                        <div style="background:linear-gradient(135deg,#ec4899,#be185d); border-radius:10px; padding:18px 16px; min-width:170px; transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                            <div style="font-size:1.4rem; margin-bottom:6px;">🎒</div>
+                            <div style="color:#fff; font-weight:700; font-size:0.875rem;">Kids Coaching</div>
+                            <div style="color:rgba(255,255,255,0.7); font-size:0.72rem; margin-top:3px;">Classes 1–8 All Subjects</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <!-- Floating WhatsApp -->
-    <a href="https://wa.me/919039662559"
-        class="fixed bottom-8 right-8 z-50 group transition-all duration-300 hover:scale-110 block"
-        target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" class="w-16 h-16 drop-shadow-2xl">
-    </a>
-
-    <footer class="bg-gradient-to-r from-gray-900 to-gray-800 text-white py-12 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-            <div>
-                <h3 class="text-lg font-bold mb-4">Edumax</h3>
-                <p class="text-gray-400 mb-6">Transforming education, one student at a time</p>
-                <!-- Social Icons -->
-                <div class="flex items-center gap-4">
-                    <a href="https://wa.me/919039662559" target="_blank" class="w-10 h-10 flex items-center justify-center bg-[#25D366] text-white rounded-full hover:scale-110 transition-transform shadow-lg" title="WhatsApp">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-whatsapp"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                    </a>
-                    <a href="https://instagram.com" target="_blank" class="w-10 h-10 flex items-center justify-center bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white rounded-full hover:scale-110 transition-transform shadow-lg" title="Instagram">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.805.249 2.227.412.56.216.96.474 1.38.894.42.42.678.82.894 1.38.163.422.358 1.057.412 2.227.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.249 1.805-.412 2.227-.216.56-.474.96-.894 1.38-.42.42-.82.678-1.38.894-.422.163-1.057.358-2.227.412-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.805-.249-2.227-.412-.56-.216-.96-.474-1.38-.894-.42-.42-.678-.82-.894-1.38-.163-.422-.358-1.057-.412-2.227-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.054-1.17.249-1.805.412-2.227.216-.56.474-.96.894-1.38.42-.42.82-.678 1.38-.894.422-.163 1.057-.358 2.227-.412 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-1.277.057-2.148.26-2.911.556-.788.307-1.457.718-2.122 1.383-.665.665-1.076 1.334-1.383 2.122-.296.763-.499 1.634-.556 2.911-.058 1.28-.072 1.688-.072 4.947s.014 3.667.072 4.947c.057 1.277.26 2.148.556 2.911.307.788.718 1.457 1.383 2.122.665.665 1.334 1.076 2.122 1.383.763.296 1.634.499 2.911.556 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c1.277-.057 2.148-.26 2.911-.556.788-.307 1.457-.718 2.122-1.383.665-.665 1.076-1.334 1.383-2.122.763-.296 1.634-.499 2.911-.556 1.28-.058 1.688-.072 4.947-.072s3.667.014 4.947-.072c1.277-.057 2.148-.26 2.911-.556.788-.307 1.457-.718 2.122-1.383.665-.665 1.076-1.334 1.383-2.122.762-.296 1.633-.499 2.911-.556 1.28-.058 1.688-.072 4.947-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                    </a>
-                    <a href="https://linkedin.com" target="_blank" class="w-10 h-10 flex items-center justify-center bg-[#0077b5] text-white rounded-full hover:scale-110 transition-transform shadow-lg" title="LinkedIn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                    </a>
+    <!-- ====== FOOTER ====== -->
+    <footer id="const-footer" style="padding:40px 16px 20px; color:#fff;">
+        <div style="max-width:1280px; margin:0 auto;">
+            <div style="display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:32px; margin-bottom:32px; flex-wrap:wrap;">
+                <div>
+                    <img src="images/edumax-logo.png" alt="EduMax" style="height:44px; margin-bottom:14px; filter:brightness(0) invert(1); opacity:0.85;">
+                    <p style="color:#9ca3af; font-size:0.875rem; line-height:1.7; margin-bottom:14px;">Transforming education through practical, industry-relevant training. Construction A to Z — From Planning to Handover.</p>
+                    <div style="display:flex; gap:10px;">
+                        <a href="https://wa.me/917415026024" target="_blank" style="width:34px; height:34px; background:#25D366; border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none;">
+                            <i class="fab fa-whatsapp" style="color:#fff;"></i>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" style="width:34px; height:34px; background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7); border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none;">
+                            <i class="fab fa-instagram" style="color:#fff; font-size:0.875rem;"></i>
+                        </a>
+                        <a href="https://youtube.com" target="_blank" style="width:34px; height:34px; background:#ff0000; border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none;">
+                            <i class="fab fa-youtube" style="color:#fff; font-size:0.875rem;"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 style="font-weight:700; margin-bottom:14px; font-size:0.9rem;">Quick Links</h4>
+                    <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:7px;">
+                        <li><a href="#const-hero" style="color:#9ca3af; text-decoration:none; font-size:0.85rem;">Construction A to Z</a></li>
+                        <li><a href="#about-course" style="color:#9ca3af; text-decoration:none; font-size:0.85rem;">About the Course</a></li>
+                        <li><a href="#curriculum" style="color:#9ca3af; text-decoration:none; font-size:0.85rem;">Course Curriculum</a></li>
+                        <li><a href="#trainers" style="color:#9ca3af; text-decoration:none; font-size:0.85rem;">Our Trainers</a></li>
+                        <li><a href="#registration" style="color:#9ca3af; text-decoration:none; font-size:0.85rem;">Register Now</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="font-weight:700; margin-bottom:14px; font-size:0.9rem;">Other Courses</h4>
+                    <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:7px;">
+                        <li><a href="courses.html#english" style="color:#9ca3af; text-decoration:none; font-size:0.85rem;">Spoken English</a></li>
+                        <li><a href="courses.html#digital-marketing" style="color:#9ca3af; text-decoration:none; font-size:0.85rem;">Digital Marketing</a></li>
+                        <li><a href="courses.html#kids" style="color:#9ca3af; text-decoration:none; font-size:0.85rem;">Kids Coaching</a></li>
+                        <li><a href="courses.html#assignments" style="color:#9ca3af; text-decoration:none; font-size:0.85rem;">Assignment Help</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="font-weight:700; margin-bottom:14px; font-size:0.9rem;">Contact</h4>
+                    <div style="display:flex; flex-direction:column; gap:7px;">
+                        <p style="color:#9ca3af; font-size:0.875rem; margin:0;">📞 <a href="tel:+917415026024" style="color:#9ca3af; text-decoration:none;">+91 7415 026 024</a></p>
+                        <p style="color:#9ca3af; font-size:0.875rem; margin:0;">💬 <a href="https://wa.me/917415026024" style="color:#9ca3af; text-decoration:none;">WhatsApp</a></p>
+                        <p style="color:#9ca3af; font-size:0.875rem; margin:0;">✉️ <a href="mailto:vjain206542@gmail.com" style="color:#9ca3af; text-decoration:none;">vjain206542@gmail.com</a></p>
+                        <p style="color:#9ca3af; font-size:0.75rem; margin-top:4px;">Mon–Sat: 9 AM – 8 PM IST</p>
+                    </div>
                 </div>
             </div>
-            <div>
-                <h4 class="font-bold mb-4">Quick Links</h4>
-                <ul class="space-y-2 text-gray-400 text-sm">
-                    <li><button onclick="scrollToSection('digital-marketing')" class="hover:text-purple-400 transition-colors">📊 Digital Marketing</button></li>
-                    <li><button onclick="scrollToSection('english')">English Speaking</button></li>
-                    <li><button onclick="scrollToSection('kids')">Kids Coaching</button></li>
-                    <li><button onclick="scrollToSection('assignments')">Assignments</button></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-bold mb-4">Support</h4>
-                <p class="text-gray-400 text-sm">English: <a href="https://wa.me/919039662559"
-                        class="hover:text-white transition-colors">+91 90396 62559</a><br>Kids & Assignments: <a
-                        href="https://wa.me/917067097574" class="hover:text-white transition-colors">+91 70670
-                        97574</a><br><a href="mailto:vjain206542@gmail.com"
-                        class="hover:text-white transition-colors">vjain206542@gmail.com</a></p>
-            </div>
-            <div>
-                <h4 class="font-bold mb-4">Contact</h4>
-                <p class="text-gray-400 text-sm">Available 9 AM - 10 PM (IST)</p>
+            <div style="border-top:1px solid #374151; padding-top:18px; text-align:center; color:#6b7280; font-size:0.8rem;">
+                © 2024 EduMax Institute. All rights reserved. | Construction A to Z – Complete Practical Construction Training
             </div>
         </div>
-        <div class="border-t border-gray-700 pt-8 text-center text-gray-400 italic">© 2024 Edumax Institute. All rights
-            reserved.</div>
     </footer>
 
-    <!-- Payment Modal -->
-    <div id="payment-modal" class="fixed inset-0 z-[100] hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden transform transition-all duration-300">
-            <div class="bg-blue-600 p-6 text-white flex justify-between items-center">
-                <h3 class="text-2xl font-bold">Fee Payment</h3>
-                <button onclick="closePaymentModal()" class="text-white hover:text-yellow-400 transition-colors">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                </button>
-            </div>
-            <form id="payment-form" class="p-8 space-y-4">
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">Student Name</label>
-                    <input type="text" id="student-name" required class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-blue-600 outline-none transition-all" placeholder="Enter full name">
-                </div>
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">Phone Number</label>
-                    <input type="tel" id="student-phone" required class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-blue-600 outline-none transition-all" placeholder="Enter phone number">
-                </div>
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">Email Address</label>
-                    <input type="email" id="student-email" required class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-blue-600 outline-none transition-all" placeholder="Enter email address">
-                </div>
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">Course Name</label>
-                    <select id="course-name" class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-blue-600 outline-none transition-all">
-                        <option value="Digital Marketing">Digital Marketing</option>
-                        <option value="English Speaking">English Speaking</option>
-                        <option value="Kids Coaching">Kids Coaching</option>
-                        <option value="Assignment Help">Assignment Help</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">Fee Amount (₹)</label>
-                    <input type="number" id="fee-amount" required class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-blue-600 outline-none transition-all" placeholder="Enter amount">
-                </div>
-                <button type="submit" class="w-full py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-all shadow-lg flex items-center justify-center gap-2">
-                    Proceed to Pay Online
-                </button>
-                <p class="text-center text-xs text-gray-400">Secure payment via Razorpay</p>
-            </form>
-        </div>
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/917415026024?text=Hi!%20I%20want%20to%20know%20more%20about%20Construction%20A%20to%20Z%20course" class="float-wa" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" style="width:60px; height:60px;">
+    </a>
+
+    <!-- Success Toast -->
+    <div id="reg-toast" style="display:none; position:fixed; bottom:100px; left:50%; transform:translateX(-50%); background:#22c55e; color:#fff; padding:16px 28px; border-radius:12px; font-weight:700; font-size:0.9rem; z-index:9999; box-shadow:0 8px 32px rgba(0,0,0,0.2); white-space:nowrap;">
+        ✅ Registration submitted! We'll contact you soon on WhatsApp.
     </div>
 
-    <!-- Payment Success Modal -->
-    <div id="success-modal" class="fixed inset-0 z-[110] hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden transform transition-all duration-300 text-center p-8">
-            <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
-            <h3 class="text-3xl font-extrabold text-gray-900 mb-2">Payment Successful!</h3>
-            <p class="text-gray-600 mb-8">Thank you for enrolling in Edumax Institute. Your payment has been confirmed.</p>
-            
-            <div class="bg-gray-50 rounded-xl p-6 mb-8 text-left space-y-3 border border-gray-100">
-                <div class="flex justify-between">
-                    <span class="text-gray-500 text-sm font-semibold uppercase">Student</span>
-                    <span id="receipt-name" class="font-bold text-gray-800"></span>
-                </div>
-                <div class="flex justify-between">
-                    <span class="text-gray-500 text-sm font-semibold uppercase">Course</span>
-                    <span id="receipt-course" class="font-bold text-gray-800"></span>
-                </div>
-                <div class="flex justify-between">
-                    <span class="text-gray-500 text-sm font-semibold uppercase">Amount Paid</span>
-                    <span id="receipt-amount" class="font-bold text-blue-600"></span>
-                </div>
-                <div class="flex justify-between border-t border-gray-200 pt-3">
-                    <span class="text-gray-500 text-sm font-semibold uppercase">Payment ID</span>
-                    <span id="receipt-id" class="text-xs font-mono text-gray-600"></span>
-                </div>
-            </div>
+    <script>
+        // Preloader
+        window.addEventListener('load', () => {
+            const pl = document.getElementById('const-preloader');
+            setTimeout(() => {
+                pl.style.opacity = '0';
+                setTimeout(() => pl.style.display = 'none', 500);
+            }, 800);
+        });
 
-            <div class="space-y-3">
-                <button onclick="window.print()" class="w-full py-4 bg-gray-900 text-white font-bold rounded-xl hover:bg-black transition-all shadow-lg flex items-center justify-center gap-2">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
-                    Print Receipt
-                </button>
-                <a id="whatsapp-confirm-btn" href="#" target="_blank" class="w-full py-4 bg-[#25D366] text-white font-bold rounded-xl hover:bg-[#128C7E] transition-all shadow-lg flex items-center justify-center gap-2">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                    Share on WhatsApp
-                </a>
-                <button onclick="closeSuccessModal()" class="w-full py-3 text-gray-500 font-bold hover:text-gray-700 transition-colors">
-                    Close
-                </button>
-            </div>
-        </div>
-    </div>
+        // Mobile Menu
+        function toggleConstMenu() {
+            const menu = document.getElementById('mobile-const-menu');
+            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+        }
 
-    <script src="script.js"></script>
+        // Responsive
+        function checkResponsive() {
+            const btn = document.getElementById('const-mobile-btn');
+            const nav = document.getElementById('desktop-const-nav');
+            if (window.innerWidth < 900) {
+                btn.style.display = 'block';
+                nav.style.display = 'none';
+            } else {
+                btn.style.display = 'none';
+                nav.style.display = 'flex';
+                document.getElementById('mobile-const-menu').style.display = 'none';
+            }
+        }
+        checkResponsive();
+        window.addEventListener('resize', checkResponsive);
+
+        // FAQ
+        function toggleFaq(btn) {
+            const answer = btn.nextElementSibling;
+            const icon = btn.querySelector('.faq-icon');
+            const isOpen = answer.classList.contains('open');
+            document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+            document.querySelectorAll('.faq-icon').forEach(i => i.classList.remove('rotate'));
+            if (!isOpen) {
+                answer.classList.add('open');
+                icon.classList.add('rotate');
+            }
+        }
+
+        // Fade-in on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+
+        // Toggle Payment Options Tab
+        function togglePaymentTab(tab) {
+            const panelRazorpay = document.getElementById('panel-razorpay');
+            const panelUpi = document.getElementById('panel-upi');
+            const btnRazorpay = document.getElementById('tab-btn-razorpay');
+            const btnUpi = document.getElementById('tab-btn-upi');
+
+            if (tab === 'upi') {
+                if (panelUpi) panelUpi.style.display = 'block';
+                if (btnUpi) {
+                    btnUpi.style.background = '#16a34a';
+                    btnUpi.style.color = '#fff';
+                    btnUpi.style.borderColor = '#16a34a';
+                }
+                if (btnRazorpay) {
+                    btnRazorpay.style.background = '#f3f4f6';
+                    btnRazorpay.style.color = '#374151';
+                    btnRazorpay.style.boxShadow = 'none';
+                }
+            } else {
+                if (panelRazorpay) panelRazorpay.style.display = 'block';
+                if (btnRazorpay) {
+                    btnRazorpay.style.background = '#1e40af';
+                    btnRazorpay.style.color = '#fff';
+                    btnRazorpay.style.boxShadow = '0 2px 8px rgba(30,64,175,0.3)';
+                }
+                if (btnUpi) {
+                    btnUpi.style.background = '#f3f4f6';
+                    btnUpi.style.color = '#374151';
+                    btnUpi.style.borderColor = '#d1d5db';
+                }
+            }
+        }
+
+        // Razorpay Checkout Trigger
+        function openConstructionRazorpay() {
+            if (typeof Razorpay === 'undefined') {
+                alert('Razorpay payment gateway script is still loading. Please check your internet connection or try again in a few seconds.');
+                return;
+            }
+
+            togglePaymentTab('razorpay');
+
+            const studentName = document.getElementById('reg-name') ? document.getElementById('reg-name').value.trim() : '';
+            const studentPhone = document.getElementById('reg-phone') ? document.getElementById('reg-phone').value.trim() : '';
+            const studentEmail = document.getElementById('reg-email') ? document.getElementById('reg-email').value.trim() : '';
+
+            const options = {
+                "key": "rzp_live_SmNTGrko89vt7e",
+                "amount": 390000, // ₹3,900 in paise
+                "currency": "INR",
+                "name": "EduMax Institute",
+                "description": "Construction A to Z Practical Course Fee (₹3,900)",
+                "image": "images/edumax-logo.png",
+                "prefill": {
+                    "name": studentName,
+                    "contact": studentPhone,
+                    "email": studentEmail
+                },
+                "notes": {
+                    "course": "Construction A to Z",
+                    "amount": "3900",
+                    "institute": "EduMax Institute"
+                },
+                "theme": {
+                    "color": "#f97316"
+                },
+                "handler": function (response) {
+                    // Payment successful
+                    const txnInput = document.getElementById('reg-txn');
+                    if (txnInput) txnInput.value = response.razorpay_payment_id;
+                    const paySelect = document.getElementById('reg-payment');
+                    if (paySelect) paySelect.value = "Online (Razorpay / UPI)";
+
+                    const waMsg = `*Payment Confirmation - Construction A to Z*%0A%0A*Name:* ${encodeURIComponent(studentName || 'Student')}%0A*Phone:* ${encodeURIComponent(studentPhone || '')}%0A*Course:* Construction A to Z%0A*Amount:* ₹3,900%0A*Payment ID:* ${response.razorpay_payment_id}%0A*Status:* Paid Successfully`;
+                    const waLink = `https://wa.me/917415026024?text=${waMsg}`;
+                    window.open(waLink, '_blank');
+
+                    alert(`✅ Payment Successful!\n\nPayment ID: ${response.razorpay_payment_id}\nCourse: Construction A to Z\nFee: ₹3,900\n\nA confirmation link has been opened on WhatsApp (+91 7415 026 024).`);
+                },
+                "modal": {
+                    "ondismiss": function() {
+                        console.log('Payment modal closed');
+                    }
+                }
+            };
+
+            try {
+                const rzp = new Razorpay(options);
+                rzp.on('payment.failed', function (resp) {
+                    alert('Payment Cancelled / Failed: ' + (resp.error ? resp.error.description : 'Please try again.'));
+                });
+                rzp.open();
+            } catch (err) {
+                console.error('Error opening Razorpay:', err);
+            }
+        }
+
+        // Registration Form Submission
+        function submitConstructionForm(e) {
+            e.preventDefault();
+            const name = document.getElementById('reg-name').value;
+            const phone = document.getElementById('reg-phone').value;
+            const email = document.getElementById('reg-email').value;
+            const city = document.getElementById('reg-city').value;
+            const qual = document.getElementById('reg-qualification').value;
+            const batch = document.getElementById('reg-batch').value;
+            const payment = document.getElementById('reg-payment').value;
+            const txn = document.getElementById('reg-txn') ? document.getElementById('reg-txn').value : '';
+
+            const msg = `*New Construction A to Z Registration*%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Phone:* ${encodeURIComponent(phone)}%0A*Email:* ${encodeURIComponent(email)}%0A*City:* ${encodeURIComponent(city)}%0A*Qualification:* ${encodeURIComponent(qual)}%0A*Preferred Batch:* ${encodeURIComponent(batch)}%0A*Payment Method:* ${encodeURIComponent(payment)}%0A*Transaction / Payment ID:* ${encodeURIComponent(txn)}`;
+            window.open(`https://wa.me/917415026024?text=${msg}`, '_blank');
+
+            const toast = document.getElementById('reg-toast');
+            if (toast) {
+                toast.style.display = 'block';
+                setTimeout(() => toast.style.display = 'none', 5000);
+            }
+            document.getElementById('construction-reg-form').reset();
+        }
+    </script>
 </body>
-
 </html>
